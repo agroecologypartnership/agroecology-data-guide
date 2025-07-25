@@ -2,31 +2,31 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "agroecology-data-guide",
+    "title": "Agroecology Partnership: Data Management Guidelines",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "Introduction\nWelcome to the Data Management Guidelines documentation of the Agroecology Partnership.. This online documentation expands on the official Agroecology Partnership Data Management Plan (DMP) and complements it with more practical and technically detailed information.\nWhile the DMP outlines the full strategy for data handling across the partnership and it is updated every 2 years, the present documentation is meant to be updated as we learn from doing. Its objective is to support partners with hands-on guidance, concrete examples, and step-by-step explanations of the data pipeline — from collection to publication — including how to make data FAIR (Findable, Accessible, Interoperable, and Reusable). This space aims to be more to the point than the DMP, helping teams implement the plan more effectively in day-to-day work. Furthermore, being a public document, we aim to offer the wider agronomy community with state-of-the-art data management practices in the Agroecology domain.\nFor any questions, please write us a line at agroecology-data@lifewatch.eu.",
     "crumbs": [
-      "Preface"
+      "Introduction"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "data-standarization.html",
+    "href": "data-standarization.html",
+    "title": "Data Standarization",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "Survey data\nData on Agroecology are multidisciplinary: There are biological data, socio-economic, geographical and many more. The main goal is to standardize data to the preferred community standard. However, sometimes there is not a clear winning standard, or the winning standard may not meet the FAIR principles. This chapter describes the preferred data standards for each data type collected in the Agroecology Parnership. In some cases, when there is not an obvious standard, we suggest evidence-based way of structuring data that fits the FAIR principles.\nSource: xkcd\nRecommendations for organizing survey data in the Agroecology partnership following a wide, spreadsheet format approach. This structure is inspired by the data structure of the American National Election Studies (ANES 2020), the recommendations of (Zimmer, Powell, and Velásquez 2024), while applying a tidy data approach (Wickham 2014) with usability on mind and the enabling of a later transformation into Open Linked Data as structured in The Survey Ontology (Scrocca et al. 2021).",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Data Standarization"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
+    "objectID": "data-standarization.html#survey-data",
+    "href": "data-standarization.html#survey-data",
+    "title": "Data Standarization",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "text": "Codebook\nCodebooks are files that explain the questions formulated in the survey. An unique identifier (a code) is assigned to each question, linking the information about the questions with the answers provided by the participants. Codebooks are typically stored as pdf, docx or xlsx files. Having interoperability on mind, we propose to use text delimited files such as csv. These type of files are largely used in data science. they have several advantages, including easy machine-readability and being an open format with no owner, which ensures data will remain readable and understandable by many different software for a long time.\nWe propose a csv file, delimited by semicolons ;. We avoid using colons , as separators because these can be used in free text, open questions. They would affect the structure of the data. We recommend to prohibit the use of semicolons ; in the answers provided by the participants, the questions, and in general in any use that is not deliming the columns of the table.\nThe codebook can be used as well during the design of the survey.\nThe example below shows an hypothetical survey codebook about the user satisfaction using an online platform.\n./data/codebook.csv\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nLabel\nType\nQuestionText\nValues\nCardinality\nQuestionType\n\n\n\n\nQ1_age\nAge\ninteger\nWhat is your age?\n\n1..1\nSingleChoice\n\n\nQ2_gender\nGender\nstring\nWhat is your gender?\nFemale|Male|Other\n1..1\nSingleChoice\n\n\nQ3_satisfaction\nSatisfaction\ninteger\nHow satisfied are you with the platform?\n1=Very unsatisfied|2=Unsatisfied|3=Neutral|4=Satisfied|5=Very satisfied\n1..1\nSingleChoice\n\n\nQ4_improvement\nImprovement\nstring\nWhat would you improve in the platform?\n\n0..n\nFreeText\n\n\n\nEach row in the codebook describes a survey question. Below is an explanation of each column:\n\nCode: A unique identifier for the question. It must be unique within the survey.\nLabel: A short, human-readable label or name for the variable that can be used in spreadsheets or statistical software.\nType: The data type of the answer. Common types include “integer”, “string”, “boolean”, or “date”.\nQuestionText: The full text of the question as it was asked in the survey.\nValues: A list of possible values for closed questions. Options are separated by vertical bars (|), and value labels can be assigned using the equals sign (=). For open or free-text questions, this field is left empty.\nCardinality: Indicates how many answers are allowed. The cardinality pattern is min..max, where the first number is the minimum required answers and the second is the maximum allowed.  n denotes “no fixed upper limit,” so 1..1 means exactly one answer, while 0..n means the question may be skipped or answered multiple times.\nQuestionType: Describes the nature of the question. Typical values include “SingleChoice”, “MultipleChoice” or “FreeText”\n\n\n\nResponses\nAnswers to the survey are recorded in the ./data/responses.csv file. Every row is the answers of a participant, and every column is named after the code in codebook.csv. This allows to link easily the information about the questions without getting the responses file full of details that difficult the analysis.\n./data/responses.csv\n\n\n\n\n\n\n\n\n\n\nrespondent_id\nQ1_age\nQ2_gender\nQ3_satisfaction\nQ4_improvement\n\n\n\n\n001\n34\nfemale\n4\nI think the platform is user-friendly\n\n\n002\n29\nmale\n5\nNeeds better support for collaboration.\n\n\n\nWe recommend to include an unique identifier for every respondent, here named as respondent_id. This allows to annomymize the survey without loosing the link to private information about the respondents that might have been collected (e.g. name, email, address) and that it must be treated according to the European Parliament Directive 95/46/EC (General Data Protection Regulation, or GDPR). Personal data collected in the Agroecology partnership must never be published or leaked in any form.\n\n\n\n\nANES. 2020. “Time Series Study Full Release: User Guide and Codebook.” https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf.\n\n\nScrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni, and Irene Celino. 2021. “The Survey Ontology: Packaging Survey Research as Research Objects.” In Proceedings of the 2nd Workshop on Data and Research Objects Management for Linked Open Science – Co-Located with ISWC 2021. https://doi.org/10.4126/FRL01-006429412.\n\n\nWickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59 (10): 1–23. https://doi.org/10.18637/jss.v059.i10.\n\n\nZimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024. Exploring Complex Survey Data Analysis Using r: A Tidy Introduction with {Srvyr} and {Survey}. Chapman & Hall/CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "Data Standarization"
     ]
   },
   {
@@ -34,7 +34,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "ANES. 2020. “Time Series Study Full Release: User Guide and\nCodebook.” https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf.\n\n\nScrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni,\nand Irene Celino. 2021. “The Survey Ontology: Packaging Survey\nResearch as Research Objects.” In Proceedings of the 2nd\nWorkshop on Data and Research Objects Management for Linked Open Science\n– Co-Located with ISWC 2021. https://doi.org/10.4126/FRL01-006429412.\n\n\nWickham, Hadley. 2014. “Tidy Data.” Journal of\nStatistical Software 59 (10): 1–23. https://doi.org/10.18637/jss.v059.i10.\n\n\nZimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024.\nExploring Complex Survey Data Analysis Using r: A Tidy Introduction\nwith {Srvyr} and {Survey}. Chapman & Hall/CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/.",
     "crumbs": [
       "References"
     ]
