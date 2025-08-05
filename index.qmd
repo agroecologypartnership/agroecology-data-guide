@@ -1,9 +1,7 @@
-# Preface {.unnumbered}
+# Introduction {.unnumbered}
 
-This is a Quarto book.
+Welcome to the Data Management Guidelines documentation of the [Agroecology Partnership](https://agroecology-partnership.eu/).. This online documentation expands on the official [Agroecology Partnership Data Management Plan (DMP)](https://www.agroecologypartnership.eu/resources) and complements it with more practical and technically detailed information.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+While the DMP outlines the full strategy for data handling across the partnership and it is updated every 2 years, the present documentation is meant to be updated as we learn from doing. Its objective is to support partners with hands-on guidance, concrete examples, and step-by-step explanations of the data pipeline — from collection to publication — including how to make data FAIR (Findable, Accessible, Interoperable, and Reusable). This space aims to be more to the point than the DMP, helping teams implement the plan more effectively in day-to-day work. Furthermore, being a public document, we aim to offer the wider agronomy community with state-of-the-art data management practices in the Agroecology domain.
 
-```{r}
-1 + 1
-```
+For any questions, please write us a line at [agroecology-data\@lifewatch.eu](mailto:agroecology-data@lifewatch.eu).

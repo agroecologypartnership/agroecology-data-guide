@@ -1,14 +1,36 @@
 project:
-  type: website
+  type: book
 
 book:
-  title: "agroecology-data-guide"
-  author: "Agroecology data management team"
-  date: "23/7/2025"
+  title: "Agroecology Partnership: Data Management Guidelines"
+  author: "<a href='https://www.lifewatch.eu/'>LifeWatch ERIC</a>"
+  date: "today"
+  date-format: "long"
+  navbar: 
+    search: true
+    logo: ae-logo.png
+    background: "white"
+  page-footer:
+    background: "#8DBF37"
+    foreground: "white"
+    left: 
+      - text: "
+          <strong>AGROECOLOGY Partnership</strong><br><br>
+          <strong>Coordinator:</strong> <a href='https://www.ptj.de/startseite'>Projektträger Jülich</a> (Germany)<br>
+          <strong>Co-coordinator:</strong> <a href='https://anr.fr/en/'>Agence nationale de la recherche</a>, ANR (France)<br><br>
+          <div style='display: flex; align-items: center; max-width: 100%;'>
+            <div style='flex: 0 0 auto; margin-right: 10px;'>
+              <img src='https://images.squarespace-cdn.com/content/v1/65c21789238d5029339b09bf/8c131b2c-980a-4116-a47e-dcabb2a82262/EU-flag-high-resolution.jpg' alt='EU Flag' style='height: 50px;'>
+            </div>
+            <div style='font-size: 1em;'>
+              Co-funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.
+            </div>
+          </div>
+          " 
+
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - data-standarization.qmd
     - references.qmd
 
 bibliography: references.bib
