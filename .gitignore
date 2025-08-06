@@ -1,2 +1,6 @@
-/.quarto/
+.quarto/
 .Rproj.user/
+_book/
+_site/
+/.quarto/
+.Rhistory

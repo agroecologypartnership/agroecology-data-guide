@@ -1,8 +1,10 @@
 project:
   type: book
-
+  output-dir: _book
+  
 book:
   title: "Agroecology Partnership: Data Management Guidelines"
+  reader-mode: true
   author: "<a href='https://www.lifewatch.eu/'>LifeWatch ERIC</a>"
   date: "today"
   date-format: "long"
@@ -10,6 +12,11 @@ book:
     search: true
     logo: ae-logo.png
     background: "white"
+  favicon: ae-logo.png
+  repo-url: https://github.com/agroecologypartnership/agroecology-data-guide
+  repo-branch: main
+  repo-actions: [issue]
+  
   page-footer:
     background: "#8DBF37"
     foreground: "white"
@@ -26,11 +33,18 @@ book:
               Co-funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.
             </div>
           </div>
-          " 
+          "
 
   chapters:
     - index.qmd
-    - data-standarization.qmd
+    - part: data-standarization.qmd
+      chapters: 
+        - standarization-tabular-data.qmd
+        - standarization-survey-data.qmd
+        - standarization-biodiversity-data.qmd
+    - part: repositories.qmd
+      chapters: 
+        - zenodo.qmd
     - references.qmd
 
 bibliography: references.bib
