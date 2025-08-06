@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="LifeWatch ERIC">
-<meta name="dcterms.date" content="2025-08-06">
 
-<title>Agroecology Partnership: Data Management Guidelines</title>
+<title>2&nbsp; Survey data – Agroecology Partnership: Data Management Guidelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -32,7 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data-standarization.html" rel="next">
+<link href="./standarization-biodiversity-data.html" rel="next">
+<link href="./standarization-tabular-data.html" rel="prev">
 <link href="./ae-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -104,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-survey-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -118,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -139,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./standarization-survey-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./standarization-survey-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></span></a>
   </div>
 </li>
@@ -184,35 +203,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#survey-project-structure" id="toc-survey-project-structure" class="nav-link active" data-scroll-target="#survey-project-structure"><span class="header-section-number">2.1</span> Survey project structure</a></li>
+  <li><a href="#survey-project-description-file" id="toc-survey-project-description-file" class="nav-link" data-scroll-target="#survey-project-description-file"><span class="header-section-number">2.2</span> Survey project description file</a></li>
+  <li><a href="#survey-project-data-files" id="toc-survey-project-data-files" class="nav-link" data-scroll-target="#survey-project-data-files"><span class="header-section-number">2.3</span> Survey project data files</a>
+  <ul class="collapse">
+  <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook"><span class="header-section-number">2.3.1</span> Codebook</a></li>
+  <li><a href="#responses" id="toc-responses" class="nav-link" data-scroll-target="#responses"><span class="header-section-number">2.3.2</span> Responses</a></li>
+  <li><a href="#participants-and-private-information" id="toc-participants-and-private-information" class="nav-link" data-scroll-target="#participants-and-private-information"><span class="header-section-number">2.3.3</span> Participants and private information</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-survey-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Agroecology Partnership: Data Management Guidelines</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p><a href="https://www.lifewatch.eu/">LifeWatch ERIC</a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 6, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -222,13 +236,222 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<p>Welcome to the Data Management Guidelines documentation of the <a href="https://agroecology-partnership.eu/">Agroecology Partnership</a>.. This online documentation expands on the official <a href="https://www.agroecologypartnership.eu/resources">Agroecology Partnership Data Management Plan (DMP)</a> and complements it with more practical and technically detailed information.</p>
-<p>While the DMP outlines the full strategy for data handling across the partnership and it is updated every 2 years, the present documentation is meant to be updated as we learn from doing. Its objective is to support partners with hands-on guidance, concrete examples, and step-by-step explanations of the data pipeline — from collection to publication — including how to make data FAIR (Findable, Accessible, Interoperable, and Reusable). This space aims to be more to the point than the DMP, helping teams implement the plan more effectively in day-to-day work. Furthermore, being a public document, we aim to offer the wider agronomy community with state-of-the-art data management practices in the Agroecology domain.</p>
-<p>For any questions, please write us a line at <a href="mailto:agroecology-data@lifewatch.eu">agroecology-data@lifewatch.eu</a>.</p>
+<p>Recommendations for organizing survey data in the Agroecology partnership following a wide, spreadsheet format approach. This structure is inspired by the data structure of the American National Election Studies <span class="citation" data-cites="anes2020">(<a href="references.html#ref-anes2020" role="doc-biblioref">ANES 2020</a>)</span>, the recommendations of <span class="citation" data-cites="zimmer2024tidy">(<a href="references.html#ref-zimmer2024tidy" role="doc-biblioref">Zimmer, Powell, and Velásquez 2024</a>)</span>, while applying a tidy data approach <span class="citation" data-cites="wickham2014tidy">(<a href="references.html#ref-wickham2014tidy" role="doc-biblioref">Wickham 2014</a>)</span> with usability on mind and the enabling of a later transformation into Open Linked Data as structured in The Survey Ontology <span class="citation" data-cites="scrocca2021surveyontology">(<a href="references.html#ref-scrocca2021surveyontology" role="doc-biblioref">Scrocca et al. 2021</a>)</span>.</p>
+<section id="survey-project-structure" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="survey-project-structure"><span class="header-section-number">2.1</span> Survey project structure</h2>
+<p>We propose a project structure that uses <code>csv</code> files as a way of formally describing the survey, both questions, answer and other information. This structure may be accompanied of a text description of the survey for further context. A minimal example of the file directory would look like:</p>
+<pre><code>.
+├── 📁 data/
+│   ├── codebook.csv
+│   └── responses.csv
+└── 📁 docs/
+    └── survey_descriptor.pdf</code></pre>
+<p>The data files are inside the data directory, and the different documents including the description of the survey are inside the docs directory.</p>
+<p>This structure can be further extended, depending on the needs of the survey. For instance, a README file can be added to the root of the project with a short explanation of the survey. When uploading to Zenodo, this can be written instead in the Description of the metadata. If the survey is uploaded to GitHub, we recommend to use the markdown format for the README file. Also on GitHub, it is recommended to include a LICENSE file, choosing the license of the data.</p>
+<p>In addition, any notebook or spreadsheet used to analyze the data can be added to the analysis folder, and reusable code scripts can be added to the scripts directory.</p>
+<pre><code>.
+├── README.md
+├── LICENSE.md
+├── 📁 data/
+│   ├── codebook.csv
+│   └── responses.csv
+├── 📁 docs/
+│   ├── survey_descriptor.pdf
+│   └── survey_analysis.pdf
+├── 📁 scripts/
+│   └── clean_data.R
+└── 📁 analysis/
+    └── survey_analysis.xlsx or survey_analysis.ipynb</code></pre>
+</section>
+<section id="survey-project-description-file" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="survey-project-description-file"><span class="header-section-number">2.2</span> Survey project description file</h2>
+<p>A survey is always quite specific, and cannot be fully understood without a good explanation of what is the context and the rationale behind the different questions. It is also a sign of respect to the respondents to explain what is the goal of your survey. We propose to include this description in a <code>survey_descriptor.pdf</code> file in the <code>docs/</code> directory.</p>
+</section>
+<section id="survey-project-data-files" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="survey-project-data-files"><span class="header-section-number">2.3</span> Survey project data files</h2>
+<p>Surveys are typically are typically stored as <code>pdf</code>, <code>docx</code> or <code>xlsx</code>. Having interoperability on mind, we propose to use <strong>text delimited files</strong> such as <code>csv</code>. These type of files are largely used in data science. they have several advantages, including easy machine-readability and being an open format with no owner, which ensures data will remain readable and understandable by many different software for a long time. We propose the following specifications:</p>
+<ul>
+<li>Separate columns using semicolons <code>;</code></li>
+<li>Use double-quotes <code>"</code> to quote strings</li>
+<li>Use <code>UTF-8</code> as encoding.</li>
+</ul>
+<p>We avoid using colons <code>,</code> as separators because these can be used in free text, open questions. They would affect the structure of the data. We recommend to prohibit the use of semicolons <code>;</code> and double-quotes <code>"</code> in any case that is not separating columns and delimiting strings respectively. We encourage you to use software solutions that allow blocking these characters in free-text answers provided by users. If blocking the use of these characters it is not possible, we urge you to ask respondents to not use them while filling up your survey.</p>
+<section id="codebook" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="codebook"><span class="header-section-number">2.3.1</span> Codebook</h3>
+<p>Codebooks are files that <strong>explain the questions</strong> formulated in the survey. An unique identifier (a code) is assigned to each question, linking the information about the questions with the answers provided by the participants. But the codebook can be used as well during the design of the survey.</p>
+<p>The example below shows an hypothetical survey codebook about the user satisfaction using an online platform.</p>
+<p><code>./data/codebook.csv</code></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Label</th>
+<th>Type</th>
+<th>QuestionText</th>
+<th>Values</th>
+<th>Cardinality</th>
+<th>QuestionType</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q1_age</td>
+<td>Age</td>
+<td>integer</td>
+<td>What is your age?</td>
+<td></td>
+<td>1..1</td>
+<td>SingleChoice</td>
+</tr>
+<tr class="even">
+<td>Q2_gender</td>
+<td>Gender</td>
+<td>string</td>
+<td>What is your gender?</td>
+<td>Female|Male|Other</td>
+<td>1..1</td>
+<td>SingleChoice</td>
+</tr>
+<tr class="odd">
+<td>Q3_satisfaction</td>
+<td>Satisfaction</td>
+<td>integer</td>
+<td>How satisfied are you with the platform?</td>
+<td>1=Very unsatisfied|2=Unsatisfied|3=Neutral|4=Satisfied|5=Very satisfied</td>
+<td>1..1</td>
+<td>SingleChoice</td>
+</tr>
+<tr class="even">
+<td>Q4_improvement</td>
+<td>Improvement</td>
+<td>string</td>
+<td>What would you improve in the platform?</td>
+<td></td>
+<td>0..n</td>
+<td>FreeText</td>
+</tr>
+</tbody>
+</table>
+<p>Each row in the codebook describes a survey question. Below is an explanation of each column:</p>
+<ul>
+<li><p><strong>Code</strong>: A unique identifier for the question. It must be unique within the survey.</p></li>
+<li><p><strong>Label</strong>: A short, human-readable label or name for the variable that can be used in spreadsheets or statistical software.</p></li>
+<li><p><strong>Type</strong>: The data type of the answer. Common types include “integer”, “string”, “boolean”, or “date”.</p></li>
+<li><p><strong>QuestionText</strong>: The full text of the question as it was asked in the survey.</p></li>
+<li><p><strong>Values</strong>: A list of possible values for closed questions. Options are separated by vertical bars (|), and value labels can be assigned using the equals sign (=). For open or free-text questions, this field is left empty.</p></li>
+<li><p><strong>Cardinality</strong>: Indicates how many answers are allowed. The cardinality pattern is <code>min..max</code>, where the first number is the minimum required answers and the second is the maximum allowed.  <code>n</code> denotes “no fixed upper limit,” so <code>1..1</code> means exactly one answer, while <code>0..n</code> means the question may be skipped or answered multiple times.</p></li>
+<li><p><strong>QuestionType</strong>: Describes the nature of the question. Typical values include “SingleChoice”, “MultipleChoice” or “FreeText”</p></li>
+</ul>
+</section>
+<section id="responses" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="responses"><span class="header-section-number">2.3.2</span> Responses</h3>
+<p><strong>Answers to the survey</strong> are recorded in the <code>./data/responses.csv</code> file. <strong>Every row is the answers of a participant</strong>, and <strong>every column is named after the <code>code</code></strong> in <code>codebook.csv</code>. This allows to link easily the information about the questions without getting the responses file full of details that difficult the analysis.</p>
+<p><code>./data/responses.csv</code></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>respondent_id</th>
+<th>Q1_age</th>
+<th>Q2_gender</th>
+<th>Q3_satisfaction</th>
+<th>Q4_improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>001</td>
+<td>34</td>
+<td>female</td>
+<td>4</td>
+<td>I think the platform is user-friendly</td>
+</tr>
+<tr class="even">
+<td>002</td>
+<td>29</td>
+<td>male</td>
+<td>5</td>
+<td>Needs better support for collaboration.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>We recommend to include an unique identifier for every respondent</strong>, here named as <code>respondent_id</code>. This allows to annomymize the survey without loosing the link to private information about the respondents that might have been collected (e.g.&nbsp;name, email, address)</p>
+</section>
+<section id="participants-and-private-information" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="participants-and-private-information"><span class="header-section-number">2.3.3</span> Participants and private information</h3>
+<p>Sometimes your survey might collect personal or sensitive information — like names, emails, or locations. If that’s the case, you <strong>should never share this data publicly</strong>. In the Agroecology Partnership, we follow the <strong>GDPR</strong> (the General Data Protection Regulation), which means that <strong>private data must be handled carefully and securely</strong>.</p>
+<p><strong>We recommend creating a separate file</strong> (not to be published!) called <code>participants.csv</code> inside your <code>data/</code> folder. This file is <strong>for internal use only</strong> — for example, if you need to follow up with participants or validate something later. To keep things tidy and safe, give each person a unique code, which we’ll call <code>respondent_id</code> and store personal info (like name or email) in separate columns. Use clear, human-friendly column names, and write them using <code>snake_case</code> (i.e.&nbsp;separate the words of the column names with underscores <code>_</code>).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>respondent_id</th>
+<th>name</th>
+<th>email</th>
+<th>country</th>
+<th>preferred_language</th>
+<th>wants_emails</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>001</td>
+<td>Jane Doe</td>
+<td>jane.doe@example.com</td>
+<td>France</td>
+<td>fr</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>002</td>
+<td>John Doe</td>
+<td>john.doe@example.com</td>
+<td>USA</td>
+<td>en</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>The table above is an example (with mocked information) of how the <code>participats.csv</code> would look like. This file helps you <strong>anonymize your actual survey data</strong>, because in the main <code>responses.csv</code>, you’ll only keep the <code>respondent_id</code>, and this is nothing that could personally identify someone.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anes2020" class="csl-entry" role="listitem">
+ANES. 2020. <span>“Time Series Study Full Release: User Guide and Codebook.”</span> <a href="https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf">https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf</a>.
+</div>
+<div id="ref-scrocca2021surveyontology" class="csl-entry" role="listitem">
+Scrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni, and Irene Celino. 2021. <span>“The Survey Ontology: Packaging Survey Research as Research Objects.”</span> In <em>Proceedings of the 2nd Workshop on Data and Research Objects Management for Linked Open Science – Co-Located with ISWC 2021</em>. <a href="https://doi.org/10.4126/FRL01-006429412">https://doi.org/10.4126/FRL01-006429412</a>.
+</div>
+<div id="ref-wickham2014tidy" class="csl-entry" role="listitem">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+</div>
+<div id="ref-zimmer2024tidy" class="csl-entry" role="listitem">
+Zimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024. <em>Exploring Complex Survey Data Analysis Using r: A Tidy Introduction with {Srvyr} and {Survey}</em>. Chapman &amp; Hall/CRC Press. <a href="https://tidy-survey-r.github.io/tidy-survey-book/">https://tidy-survey-r.github.io/tidy-survey-book/</a>.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -651,10 +874,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./standarization-tabular-data.html" class="pagination-link" aria-label="Tabular data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tabular data</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-standarization.html" class="pagination-link" aria-label="Data Standarization">
-        <span class="nav-page-text">Data Standarization</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./standarization-biodiversity-data.html" class="pagination-link" aria-label="Biodiversity data">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Biodiversity data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
