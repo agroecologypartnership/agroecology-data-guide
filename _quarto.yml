@@ -41,10 +41,10 @@ book:
       chapters: 
         - standarization-tabular-data.qmd
         - standarization-survey-data.qmd
-        - standarization-biodiversity-data.qmd
-    - part: repositories.qmd
-      chapters: 
-        - zenodo.qmd
+        # - standarization-biodiversity-data.qmd
+    # - part: repositories.qmd
+    #  chapters: 
+    #    - zenodo.qmd
     - references.qmd
 
 bibliography: references.bib
