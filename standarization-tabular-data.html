@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -142,29 +162,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./standarization-biodiversity-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Biodiversity data</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./repositories.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Publishing</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./zenodo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Zenodo</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -178,8 +175,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#best-practices-for-tabular-data" id="toc-best-practices-for-tabular-data" class="nav-link active" data-scroll-target="#best-practices-for-tabular-data"><span class="header-section-number">1.1</span> Best practices for Tabular Data</a>
+  <ul class="collapse">
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats"><span class="header-section-number">1.1.1</span> File formats</a></li>
+  <li><a href="#handling-empty-cells" id="toc-handling-empty-cells" class="nav-link" data-scroll-target="#handling-empty-cells"><span class="header-section-number">1.1.2</span> Handling Empty cells</a></li>
+  <li><a href="#column-names" id="toc-column-names" class="nav-link" data-scroll-target="#column-names"><span class="header-section-number">1.1.3</span> Column names</a></li>
+  <li><a href="#table-schema" id="toc-table-schema" class="nav-link" data-scroll-target="#table-schema"><span class="header-section-number">1.1.4</span> Table schema</a></li>
+  <li><a href="#adhere-to-community-standards" id="toc-adhere-to-community-standards" class="nav-link" data-scroll-target="#adhere-to-community-standards"><span class="header-section-number">1.1.5</span> Adhere to community standards</a></li>
+  <li><a href="#separate-raw-data-from-calculations" id="toc-separate-raw-data-from-calculations" class="nav-link" data-scroll-target="#separate-raw-data-from-calculations"><span class="header-section-number">1.1.6</span> Separate raw data from calculations</a></li>
+  </ul></li>
+  <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data"><span class="header-section-number">1.2</span> What is Tidy data?</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -203,10 +215,145 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Use Frictionless table schema or RO-Crates.</p>
-<p>page under construction.</p>
+<p>Tabular data are often referred as <strong>data structured in rows and columns, where each row contains values for a set of properties and each column represents a specific property of the things described by the rows</strong> <span class="citation" data-cites="w3c_tabular_data_model_2015">(<a href="references.html#ref-w3c_tabular_data_model_2015" role="doc-biblioref">Tennison and Kellogg 2015</a>)</span>. Following certain best practices and well-studied structures when creating tabular data make it easier to analyze, visualize and reuse - by others or by your future self.</p>
+<section id="best-practices-for-tabular-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="best-practices-for-tabular-data"><span class="header-section-number">1.1</span> Best practices for Tabular Data</h2>
+<p>Tabular data can <strong>follow very different structures</strong>. There is a lot of flexibility in how you name your columns or what values you put in every cell. This flexibility is at the same time a <strong>double-sided knife</strong>: follow the right recommendations, and your data will be easy to analyze. Do the wrong decisions, and your same data could become not usable. Best practices go around columns names and consistency. Here we will describe common mistakes and how to solve them:</p>
+<section id="file-formats" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">1.1.1</span> File formats</h3>
+<p>While you are free to use proprietary spreadsheet software such as Microsoft Excel or Google Sheets to work on your data, <strong>we strongly recommend storing datasets in <code>.csv</code> or tab-delimited formats</strong>. This ensures compatibility across software and, most importantly, protects your work from accidental obsolescence. Imagine you open an old project and find that, after a software update, some formulas no longer work, column types have shifted, or the file won’t even open.</p>
+<p><strong>Open formats like <code>.csv</code> are readable by virtually any tool</strong>, now and decades from now. If a problem ever arises, there’s a global community of developers who can build solutions to recover your data. Proprietary formats are fine for analysis, but their internal rules can change without notice, and you might only discover it when it’s too late.</p>
+<p>In short: <strong>use Excel or Sheets to crunch numbers if you like, but keep your raw data in <code>.csv</code></strong> and publish both raw and processed datasets in <code>.csv</code> whenever possible. Avoid <code>.xlsx</code> as your master copy. And you can always open <code>.csv</code> in Excel for analysis without locking your work into a single program’s rules.</p>
+</section>
+<section id="handling-empty-cells" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="handling-empty-cells"><span class="header-section-number">1.1.2</span> Handling Empty cells</h3>
+<p><strong>Most software handling text, tabular files, are able to recognize empty cells</strong>. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as “NA” or “NULL”. <strong>We recommend to leave empty cells when a value is not known</strong>. A common mistake is to add 0’s in a numeric variable when a value is unknown. This could distort further analysis as 0’s are considered meaningful values. Common file formats that allow empty values are <code>.csv</code>, <code>.txt</code> or <code>.xlsx</code>.</p>
+<p>Certain formats don’t allow adding empty values. In this case, it is recommended to add a placeholder such as <code>-9999</code> in numeric variables, or <code>NA</code> in text variables. This blank value must be documented properly. For instance, the binary format <code>NetCDF</code> does not allow empty cells, but you can document empty values by using the attributes <code>missing_value</code> or <code>_FillValue</code>.</p>
+</section>
+<section id="column-names" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="column-names"><span class="header-section-number">1.1.3</span> Column names</h3>
+<p>The names used to describe your variables should be <strong>clear and consistent</strong>. Avoid spaces or special characters, and adopt standard units. Examples:</p>
+<ul>
+<li><code>max_temp_celsius</code> instead of <code>Max Temp Celsius</code></li>
+<li><code>soil_ph</code> instead of <code>Soil-pH</code></li>
+</ul>
+<p><strong>We recommend to use lowercase and underscores <code>_</code> instead of spaces</strong>. <strong>This style is known as <code>snake_case</code></strong>. Other well-known style is <code>camelCase</code>, where spaces are avoided and words are spitted by using a Capital letter to emphasize the different words.</p>
+</section>
+<section id="table-schema" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="table-schema"><span class="header-section-number">1.1.4</span> Table schema</h3>
+<p><strong>A table schema is a data dictionary that defines each variable in your data table</strong>, recording information such as the data type of the column (numeric, date, string, boolean…), units or possible values. You can save this in a separated file and send it together with your data. We elaborate about this in the following chapters where we also show some examples and available standards and tools.</p>
+</section>
+<section id="adhere-to-community-standards" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="adhere-to-community-standards"><span class="header-section-number">1.1.5</span> Adhere to community standards</h3>
+<p>Think of data like a written language: if everyone makes up their own grammar, nobody can understand each other. In data, this applies not only between humans but also between humans and machines. <strong>We rely on computers to analyze our data, but unlike us, they’re terrible at guessing meaning</strong>. To them, data are just zeros and ones. In science, the key is in the context, so <strong>we need to shape our data so both people and machines can read them correctly.</strong></p>
+<p>The easiest way to do that? <strong>Follow community standards</strong>. Chances are, you’re not the first person working in your field. Others have faced the same problems and worked hard to solve them. Communities dealing with certain types of data — geospatial, surveys, biodiversity, genetics — have already agreed on rules and formats so that other researchers and software can make sense of the data. Take dates as an example. You could write them in many ways: <code>DD/MM/YYYY</code>, <code>MM/DD/YYYY</code>, or even with month names. But most software understands them best in the format <code>YYYY-MM-DD</code>. This is not arbitrarty: it’s an international standard (ISO 8601) designed after much discussion and testing.</p>
+<p>In the next chapters, we will look at several community standards relevant to Agroecology, and we will recommend which ones to use for maximum clarity and interoperability.</p>
+</section>
+<section id="separate-raw-data-from-calculations" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="separate-raw-data-from-calculations"><span class="header-section-number">1.1.6</span> Separate raw data from calculations</h3>
+<p><strong>Raw data should always live apart from any data cleaning, wrangling, or analysis</strong>. Even if your raw file has typos, strange characters, or awkward formatting — leave them as they are. They’re part of the original record.</p>
+<p>Do all cleaning and analysis in a separate file or script (R, Python, Julia, Excel formulas…) and share that too. <strong>This will enable anyone can reproduce your process and get the same results</strong>. This is of course, unless you are unsure of your analysis and embarrassed to show to others. In that case you should proofread until you are happy.</p>
+<p>Why keep the artifacts? Because it preserves a trustworthy copy of the original, makes your work reproducible, and gives you a safe point to return to if something later goes wrong.</p>
+</section>
+</section>
+<section id="what-is-tidy-data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-tidy-data"><span class="header-section-number">1.2</span> What is Tidy data?</h2>
+<p>In practice, following the principles of tidy data can make tabular datasets easier to work with <span class="citation" data-cites="wickham2014tidy">(<a href="references.html#ref-wickham2014tidy" role="doc-biblioref">Wickham 2014</a>)</span>. <strong>In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation</strong>. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>farm</th>
+<th>grape_yield</th>
+<th>wine_production</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bavaria (DE)</td>
+<td>7000 kg/h</td>
+<td>60 hl/ha</td>
+</tr>
+<tr class="even">
+<td>La Rioja (ES)</td>
+<td>5000 kg/h</td>
+<td>40 hl/ha</td>
+</tr>
+<tr class="odd">
+<td>Peloponnese (GR)</td>
+<td>6000 kg/h</td>
+<td>50 hl/ha</td>
+</tr>
+</tbody>
+</table>
+<p>Here, different variables are spread across columns, and units are written inside the values. While this structure is easy to understand for most of us, it is harder to analyze for machines:</p>
+<ul>
+<li><strong>Units mixed with values:</strong> The measurement units are embedded in the cell content, making it difficult to perform numeric calculations without first extracting and converting the values to numbers.</li>
+<li><strong>Variable names as column headers:</strong> Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.</li>
+<li><strong>Inconsistent row structure:</strong> If some observations are missing a value, it’s harder to handle missing data systematically.</li>
+<li><strong>Limited scalability:</strong> Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.</li>
+<li><strong>Filtering and grouping complexity:</strong> Aggregating or comparing values across variables requires multiple steps instead of simple column-based operations.</li>
+</ul>
+<p>A tidy version of the same data represents each measurement as a separate row with explicit columns for the variable type, value, and unit, so that <strong>each row contains a single observation of a single variable</strong>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Farm</th>
+<th>Variable</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bavaria (DE)</td>
+<td>Grape Yield</td>
+<td>7000</td>
+<td>kg/h</td>
+</tr>
+<tr class="even">
+<td>Bavaria (DE)</td>
+<td>Wine Production</td>
+<td>60</td>
+<td>hl/ha</td>
+</tr>
+<tr class="odd">
+<td>La Rioja (ES)</td>
+<td>Grape Yield</td>
+<td>5000</td>
+<td>kg/h</td>
+</tr>
+<tr class="even">
+<td>La Rioja (ES)</td>
+<td>Wine Production</td>
+<td>40</td>
+<td>hl/ha</td>
+</tr>
+<tr class="odd">
+<td>Peloponnese (GR)</td>
+<td>Grape Yield</td>
+<td>6000</td>
+<td>kg/h</td>
+</tr>
+<tr class="even">
+<td>Peloponnese (GR)</td>
+<td>Wine Production</td>
+<td>50</td>
+<td>hl/ha</td>
+</tr>
+</tbody>
+</table>
+<p>This tidy format makes it easy to filter, group, or plot by crop type, farm, or yield, and it aligns with modern data analysis workflows. Following these principles helps ensure that tabular data are both <strong>clear</strong> and <strong>practical</strong> for downstream use.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-w3c_tabular_data_model_2015" class="csl-entry" role="listitem">
+Tennison, Jeni, and Gregg Kellogg. 2015. <span>“Model for Tabular Data and Metadata on the Web.”</span> World Wide Web Consortium; W3C Recommendation. <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/">https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/</a>.
+</div>
+<div id="ref-wickham2014tidy" class="csl-entry" role="listitem">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -650,7 +797,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -24,7 +24,29 @@
     "href": "standarization-tabular-data.html",
     "title": "1  Tabular data",
     "section": "",
-    "text": "Use Frictionless table schema or RO-Crates.\npage under construction.",
+    "text": "1.1 Best practices for Tabular Data\nTabular data are often referred as data structured in rows and columns, where each row contains values for a set of properties and each column represents a specific property of the things described by the rows (Tennison and Kellogg 2015). Following certain best practices and well-studied structures when creating tabular data make it easier to analyze, visualize and reuse - by others or by your future self.\nTabular data can follow very different structures. There is a lot of flexibility in how you name your columns or what values you put in every cell. This flexibility is at the same time a double-sided knife: follow the right recommendations, and your data will be easy to analyze. Do the wrong decisions, and your same data could become not usable. Best practices go around columns names and consistency. Here we will describe common mistakes and how to solve them:",
+    "crumbs": [
+      "Data Standarization",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tabular data</span>"
+    ]
+  },
+  {
+    "objectID": "standarization-tabular-data.html#best-practices-for-tabular-data",
+    "href": "standarization-tabular-data.html#best-practices-for-tabular-data",
+    "title": "1  Tabular data",
+    "section": "",
+    "text": "1.1.1 File formats\nWhile you are free to use proprietary spreadsheet software such as Microsoft Excel or Google Sheets to work on your data, we strongly recommend storing datasets in .csv or tab-delimited formats. This ensures compatibility across software and, most importantly, protects your work from accidental obsolescence. Imagine you open an old project and find that, after a software update, some formulas no longer work, column types have shifted, or the file won’t even open.\nOpen formats like .csv are readable by virtually any tool, now and decades from now. If a problem ever arises, there’s a global community of developers who can build solutions to recover your data. Proprietary formats are fine for analysis, but their internal rules can change without notice, and you might only discover it when it’s too late.\nIn short: use Excel or Sheets to crunch numbers if you like, but keep your raw data in .csv and publish both raw and processed datasets in .csv whenever possible. Avoid .xlsx as your master copy. And you can always open .csv in Excel for analysis without locking your work into a single program’s rules.\n\n\n1.1.2 Handling Empty cells\nMost software handling text, tabular files, are able to recognize empty cells. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as “NA” or “NULL”. We recommend to leave empty cells when a value is not known. A common mistake is to add 0’s in a numeric variable when a value is unknown. This could distort further analysis as 0’s are considered meaningful values. Common file formats that allow empty values are .csv, .txt or .xlsx.\nCertain formats don’t allow adding empty values. In this case, it is recommended to add a placeholder such as -9999 in numeric variables, or NA in text variables. This blank value must be documented properly. For instance, the binary format NetCDF does not allow empty cells, but you can document empty values by using the attributes missing_value or _FillValue.\n\n\n1.1.3 Column names\nThe names used to describe your variables should be clear and consistent. Avoid spaces or special characters, and adopt standard units. Examples:\n\nmax_temp_celsius instead of Max Temp Celsius\nsoil_ph instead of Soil-pH\n\nWe recommend to use lowercase and underscores _ instead of spaces. This style is known as snake_case. Other well-known style is camelCase, where spaces are avoided and words are spitted by using a Capital letter to emphasize the different words.\n\n\n1.1.4 Table schema\nA table schema is a data dictionary that defines each variable in your data table, recording information such as the data type of the column (numeric, date, string, boolean…), units or possible values. You can save this in a separated file and send it together with your data. We elaborate about this in the following chapters where we also show some examples and available standards and tools.\n\n\n1.1.5 Adhere to community standards\nThink of data like a written language: if everyone makes up their own grammar, nobody can understand each other. In data, this applies not only between humans but also between humans and machines. We rely on computers to analyze our data, but unlike us, they’re terrible at guessing meaning. To them, data are just zeros and ones. In science, the key is in the context, so we need to shape our data so both people and machines can read them correctly.\nThe easiest way to do that? Follow community standards. Chances are, you’re not the first person working in your field. Others have faced the same problems and worked hard to solve them. Communities dealing with certain types of data — geospatial, surveys, biodiversity, genetics — have already agreed on rules and formats so that other researchers and software can make sense of the data. Take dates as an example. You could write them in many ways: DD/MM/YYYY, MM/DD/YYYY, or even with month names. But most software understands them best in the format YYYY-MM-DD. This is not arbitrarty: it’s an international standard (ISO 8601) designed after much discussion and testing.\nIn the next chapters, we will look at several community standards relevant to Agroecology, and we will recommend which ones to use for maximum clarity and interoperability.\n\n\n1.1.6 Separate raw data from calculations\nRaw data should always live apart from any data cleaning, wrangling, or analysis. Even if your raw file has typos, strange characters, or awkward formatting — leave them as they are. They’re part of the original record.\nDo all cleaning and analysis in a separate file or script (R, Python, Julia, Excel formulas…) and share that too. This will enable anyone can reproduce your process and get the same results. This is of course, unless you are unsure of your analysis and embarrassed to show to others. In that case you should proofread until you are happy.\nWhy keep the artifacts? Because it preserves a trustworthy copy of the original, makes your work reproducible, and gives you a safe point to return to if something later goes wrong.",
+    "crumbs": [
+      "Data Standarization",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tabular data</span>"
+    ]
+  },
+  {
+    "objectID": "standarization-tabular-data.html#what-is-tidy-data",
+    "href": "standarization-tabular-data.html#what-is-tidy-data",
+    "title": "1  Tabular data",
+    "section": "1.2 What is Tidy data?",
+    "text": "1.2 What is Tidy data?\nIn practice, following the principles of tidy data can make tabular datasets easier to work with (Wickham 2014). In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:\n\n\n\nfarm\ngrape_yield\nwine_production\n\n\n\n\nBavaria (DE)\n7000 kg/h\n60 hl/ha\n\n\nLa Rioja (ES)\n5000 kg/h\n40 hl/ha\n\n\nPeloponnese (GR)\n6000 kg/h\n50 hl/ha\n\n\n\nHere, different variables are spread across columns, and units are written inside the values. While this structure is easy to understand for most of us, it is harder to analyze for machines:\n\nUnits mixed with values: The measurement units are embedded in the cell content, making it difficult to perform numeric calculations without first extracting and converting the values to numbers.\nVariable names as column headers: Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.\nInconsistent row structure: If some observations are missing a value, it’s harder to handle missing data systematically.\nLimited scalability: Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.\nFiltering and grouping complexity: Aggregating or comparing values across variables requires multiple steps instead of simple column-based operations.\n\nA tidy version of the same data represents each measurement as a separate row with explicit columns for the variable type, value, and unit, so that each row contains a single observation of a single variable.\n\n\n\nFarm\nVariable\nValue\nUnit\n\n\n\n\nBavaria (DE)\nGrape Yield\n7000\nkg/h\n\n\nBavaria (DE)\nWine Production\n60\nhl/ha\n\n\nLa Rioja (ES)\nGrape Yield\n5000\nkg/h\n\n\nLa Rioja (ES)\nWine Production\n40\nhl/ha\n\n\nPeloponnese (GR)\nGrape Yield\n6000\nkg/h\n\n\nPeloponnese (GR)\nWine Production\n50\nhl/ha\n\n\n\nThis tidy format makes it easy to filter, group, or plot by crop type, farm, or yield, and it aligns with modern data analysis workflows. Following these principles helps ensure that tabular data are both clear and practical for downstream use.\n\n\n\n\nTennison, Jeni, and Gregg Kellogg. 2015. “Model for Tabular Data and Metadata on the Web.” World Wide Web Consortium; W3C Recommendation. https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/.\n\n\nWickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59 (10): 1–23. https://doi.org/10.18637/jss.v059.i10.",
     "crumbs": [
       "Data Standarization",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tabular data</span>"
@@ -75,43 +97,11 @@
     ]
   },
   {
-    "objectID": "standarization-biodiversity-data.html",
-    "href": "standarization-biodiversity-data.html",
-    "title": "3  Biodiversity data",
-    "section": "",
-    "text": "Follow Darwin Core standard\npage under construction",
-    "crumbs": [
-      "Data Standarization",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Biodiversity data</span>"
-    ]
-  },
-  {
-    "objectID": "repositories.html",
-    "href": "repositories.html",
-    "title": "Data Publishing",
-    "section": "",
-    "text": "page under construction.",
-    "crumbs": [
-      "Data Publishing"
-    ]
-  },
-  {
-    "objectID": "zenodo.html",
-    "href": "zenodo.html",
-    "title": "4  Zenodo",
-    "section": "",
-    "text": "page under construction.",
-    "crumbs": [
-      "Data Publishing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Zenodo</span>"
-    ]
-  },
-  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "ANES. 2020. “Time Series Study Full Release: User Guide and\nCodebook.” https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf.\n\n\nScrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni,\nand Irene Celino. 2021. “The Survey Ontology: Packaging Survey\nResearch as Research Objects.” In Proceedings of the 2nd\nWorkshop on Data and Research Objects Management for Linked Open Science\n– Co-Located with ISWC 2021. https://doi.org/10.4126/FRL01-006429412.\n\n\nWickham, Hadley. 2014. “Tidy Data.” Journal of\nStatistical Software 59 (10): 1–23. https://doi.org/10.18637/jss.v059.i10.\n\n\nZimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024.\nExploring Complex Survey Data Analysis Using r: A Tidy Introduction\nwith {Srvyr} and {Survey}. Chapman & Hall/CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/.",
+    "text": "ANES. 2020. “Time Series Study Full Release: User Guide and\nCodebook.” https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf.\n\n\nScrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni,\nand Irene Celino. 2021. “The Survey Ontology: Packaging Survey\nResearch as Research Objects.” In Proceedings of the 2nd\nWorkshop on Data and Research Objects Management for Linked Open Science\n– Co-Located with ISWC 2021. https://doi.org/10.4126/FRL01-006429412.\n\n\nTennison, Jeni, and Gregg Kellogg. 2015. “Model for Tabular Data\nand Metadata on the Web.” World Wide Web Consortium; W3C\nRecommendation. https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/.\n\n\nWickham, Hadley. 2014. “Tidy Data.” Journal of\nStatistical Software 59 (10): 1–23. https://doi.org/10.18637/jss.v059.i10.\n\n\nZimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024.\nExploring Complex Survey Data Analysis Using r: A Tidy Introduction\nwith {Srvyr} and {Survey}. Chapman & Hall/CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/.",
     "crumbs": [
       "References"
     ]
