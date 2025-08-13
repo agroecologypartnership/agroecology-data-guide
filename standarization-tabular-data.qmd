@@ -1,5 +1,88 @@
 # Tabular data
 
-Use Frictionless table schema or RO-Crates.
+Tabular data are often referred as **data structured in rows and columns, where each row contains values for a set of properties and each column represents a specific property of the things described by the rows** [@w3c_tabular_data_model_2015]. Following certain best practices and well-studied structures when creating tabular data make it easier to analyze, visualize and reuse - by others or by your future self.
 
-page under construction.
+## Best practices for Tabular Data
+
+Tabular data can **follow very different structures**. There is a lot of flexibility in how you name your columns or what values you put in every cell. This flexibility is at the same time a **double-sided knife**: follow the right recommendations, and your data will be easy to analyze. Do the wrong decisions, and your same data could become not usable. Best practices go around columns names and consistency. Here we will describe common mistakes and how to solve them:
+
+### File formats
+
+While you are free to use proprietary spreadsheet software such as Microsoft Excel or Google Sheets to work on your data, **we strongly recommend storing datasets in `.csv` or tab-delimited formats**. This ensures compatibility across software and, most importantly, protects your work from accidental obsolescence. Imagine you open an old project and find that, after a software update, some formulas no longer work, column types have shifted, or the file won’t even open.
+
+**Open formats like `.csv` are readable by virtually any tool**, now and decades from now. If a problem ever arises, there’s a global community of developers who can build solutions to recover your data. Proprietary formats are fine for analysis, but their internal rules can change without notice, and you might only discover it when it’s too late.
+
+In short: **use Excel or Sheets to crunch numbers if you like, but keep your raw data in `.csv`** and publish both raw and processed datasets in `.csv` whenever possible. Avoid `.xlsx` as your master copy. And you can always open `.csv` in Excel for analysis without locking your work into a single program’s rules.
+
+### Handling Empty cells
+
+**Most software handling text, tabular files, are able to recognize empty cells**. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as "NA" or "NULL". **We recommend to leave empty cells when a value is not known**. A common mistake is to add 0's in a numeric variable when a value is unknown. This could distort further analysis as 0's are considered meaningful values. Common file formats that allow empty values are `.csv`, `.txt` or `.xlsx`. 
+
+Certain formats don't allow adding empty values. In this case, it is recommended to add a placeholder such as `-9999` in numeric variables, or `NA` in text variables. This blank value must be documented properly. For instance, the binary format `NetCDF` does not allow empty cells, but you can document empty values by using the attributes `missing_value` or `_FillValue`. 
+
+### Column names
+
+The names used to describe your variables should be **clear and consistent**. Avoid spaces or special characters, and adopt standard units. Examples:
+
+- `max_temp_celsius` instead of `Max Temp Celsius`
+- `soil_ph` instead of `Soil-pH`
+
+**We recommend to use lowercase and underscores `_` instead of spaces**. **This style is known as `snake_case`**. Other well-known style is `camelCase`, where spaces are avoided and words are spitted by using a Capital letter to emphasize the different words.
+
+### Table schema
+
+**A table schema is a data dictionary that defines each variable in your data table**, recording information such as the data type of the column (numeric, date, string, boolean...), units or possible values. You can save this in a separated file and send it together with your data. We elaborate about this in the following chapters where we also show some examples and available standards and tools.
+
+### Adhere to community standards
+
+Think of data like a written language: if everyone makes up their own grammar, nobody can understand each other. In data, this applies not only between humans but also between humans and machines. **We rely on computers to analyze our data, but unlike us, they’re terrible at guessing meaning**. To them, data are just zeros and ones. In science, the key is in the context, so **we need to shape our data so both people and machines can read them correctly.**
+
+The easiest way to do that? **Follow community standards**. Chances are, you’re not the first person working in your field. Others have faced the same problems and worked hard to solve them. Communities dealing with certain types of data — geospatial, surveys, biodiversity, genetics — have already agreed on rules and formats so that other researchers and software can make sense of the data. Take dates as an example. You could write them in many ways: `DD/MM/YYYY`, `MM/DD/YYYY`, or even with month names. But most software understands them best in the format `YYYY-MM-DD`. This is not arbitrarty: it’s an international standard (ISO 8601) designed after much discussion and testing.
+
+In the next chapters, we will look at several community standards relevant to Agroecology, and we will recommend which ones to use for maximum clarity and interoperability.
+
+### Separate raw data from calculations
+
+**Raw data should always live apart from any data cleaning, wrangling, or analysis**. Even if your raw file has typos, strange characters, or awkward formatting — leave them as they are. They’re part of the original record.
+
+Do all cleaning and analysis in a separate file or script (R, Python, Julia, Excel formulas...) and share that too. **This will enable anyone can reproduce your process and get the same results**. This is of course, unless you are unsure of your analysis and embarrassed to show to others. In that case you should proofread until you are happy.
+
+Why keep the artifacts? Because it preserves a trustworthy copy of the original, makes your work reproducible, and gives you a safe point to return to if something later goes wrong.
+
+## What is Tidy data?
+
+In practice, following the principles of tidy data can make tabular datasets easier to work with [@wickham2014tidy]. **In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation**. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:
+
+| farm             | grape_yield | wine_production |
+| ---------------- | ----------- | --------------- |
+| Bavaria (DE)     | 7000 kg/h   | 60 hl/ha        |
+| La Rioja (ES)    | 5000 kg/h   | 40 hl/ha        |
+| Peloponnese (GR) | 6000 kg/h   | 50 hl/ha        |
+
+Here, different variables are spread across columns, and units are written inside the values. While this structure is easy to understand for most of us, it is harder to analyze for machines:
+
+- **Units mixed with values:** The measurement units are embedded in the cell content, making it difficult to perform numeric calculations without first extracting and converting the values to numbers.
+- **Variable names as column headers:** Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.
+- **Inconsistent row structure:** If some observations are missing a value, it’s harder to handle missing data systematically.
+- **Limited scalability:** Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.
+- **Filtering and grouping complexity:** Aggregating or comparing values across variables requires multiple steps instead of simple column-based operations.
+
+A tidy version of the same data represents each measurement as a separate row with explicit columns for the variable type, value, and unit, so that **each row contains a single observation of a single variable**.
+
+| Farm             | Variable        | Value | Unit  |
+| ---------------- | --------------- | ----- | ----- |
+| Bavaria (DE)     | Grape Yield     | 7000  | kg/h  |
+| Bavaria (DE)     | Wine Production | 60    | hl/ha |
+| La Rioja (ES)    | Grape Yield     | 5000  | kg/h  |
+| La Rioja (ES)    | Wine Production | 40    | hl/ha |
+| Peloponnese (GR) | Grape Yield     | 6000  | kg/h  |
+| Peloponnese (GR) | Wine Production | 50    | hl/ha |
+
+This tidy format makes it easy to filter, group, or plot by crop type, farm, or yield, and it aligns with modern data analysis workflows. Following these principles helps ensure that tabular data are both **clear** and **practical** for downstream use.
+
+
+
+
+
+
+
