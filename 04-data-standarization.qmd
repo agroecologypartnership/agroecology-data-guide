@@ -1,7 +1,7 @@
-# Data Standarization {.unnumbered}
+# Data Standarization
 
 Data on Agroecology are multidisciplinary: There are biological data, socio-economic, geographical and many more. The main goal is to standardize data to the preferred community standard. However, sometimes there is not a clear winning standard, or the winning standard may not meet the FAIR principles. This chapter describes the preferred data standards for each data type collected in the Agroecology Parnership. In some cases, when there is not an obvious standard, we suggest evidence-based way of structuring data that fits the FAIR principles.
 
-![](https://imgs.xkcd.com/comics/standards.png)
+![](https://imgs.xkcd.com/comics/standards.png){.lightbox}
 
 Source: [xkcd](https://xkcd.com/927)

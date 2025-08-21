@@ -16,22 +16,18 @@ In short: **use Excel or Sheets to crunch numbers if you like, but keep your raw
 
 ### Handling Empty cells
 
-**Most software handling text, tabular files, are able to recognize empty cells**. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as "NA" or "NULL". **We recommend to leave empty cells when a value is not known**. A common mistake is to add 0's in a numeric variable when a value is unknown. This could distort further analysis as 0's are considered meaningful values. Common file formats that allow empty values are `.csv`, `.txt` or `.xlsx`. 
+**Most software handling text, tabular files, are able to recognize empty cells**. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as "NA" or "NULL". **We recommend to leave empty cells when a value is not known**. A common mistake is to add 0's in a numeric variable when a value is unknown. This could distort further analysis as 0's are considered meaningful values. Common file formats that allow empty values are `.csv`, `.txt` or `.xlsx`.
 
-Certain formats don't allow adding empty values. In this case, it is recommended to add a placeholder such as `-9999` in numeric variables, or `NA` in text variables. This blank value must be documented properly. For instance, the binary format `NetCDF` does not allow empty cells, but you can document empty values by using the attributes `missing_value` or `_FillValue`. 
+Certain formats don't allow adding empty values. In this case, it is recommended to add a placeholder such as `-9999` in numeric variables, or `NA` in text variables. This blank value must be documented properly. For instance, the binary format `NetCDF` does not allow empty cells, but you can document empty values by using the attributes `missing_value` or `_FillValue`.
 
 ### Column names
 
 The names used to describe your variables should be **clear and consistent**. Avoid spaces or special characters, and adopt standard units. Examples:
 
-- `max_temp_celsius` instead of `Max Temp Celsius`
-- `soil_ph` instead of `Soil-pH`
+-   `max_temp_celsius` instead of `Max Temp Celsius`
+-   `soil_ph` instead of `Soil-pH`
 
 **We recommend to use lowercase and underscores `_` instead of spaces**. **This style is known as `snake_case`**. Other well-known style is `camelCase`, where spaces are avoided and words are spitted by using a Capital letter to emphasize the different words.
-
-### Table schema
-
-**A table schema is a data dictionary that defines each variable in your data table**, recording information such as the data type of the column (numeric, date, string, boolean...), units or possible values. You can save this in a separated file and send it together with your data. We elaborate about this in the following chapters where we also show some examples and available standards and tools.
 
 ### Adhere to community standards
 
@@ -49,28 +45,159 @@ Do all cleaning and analysis in a separate file or script (R, Python, Julia, Exc
 
 Why keep the artifacts? Because it preserves a trustworthy copy of the original, makes your work reproducible, and gives you a safe point to return to if something later goes wrong.
 
-## What is Tidy data?
+## Table schema
 
-In practice, following the principles of tidy data can make tabular datasets easier to work with [@wickham2014tidy]. **In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation**. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:
+A table schema is a data dictionary that standardizes and explains each variable in your dataset. It records key information such as the data type of each column (numeric, date, string, boolean…), expected units, allowed values, or format rules. By clearly describing what each column should contain, the schema ensures that your data is consistent, interpretable, and aligned with project standards.
 
-| farm             | grape_yield | wine_production |
-| ---------------- | ----------- | --------------- |
-| Bavaria (DE)     | 7000 kg/h   | 60 hl/ha        |
-| La Rioja (ES)    | 5000 kg/h   | 40 hl/ha        |
-| Peloponnese (GR) | 6000 kg/h   | 50 hl/ha        |
+The schema is stored as a separate file that should accompany your dataset. It is typically named after the dataset it describes, for example: `mydataset.schema.json`, `mydataset.schema.yaml`, or even a text/Word version for non-technical users. Including the schema with the dataset provides a clear reference for anyone using or reviewing the data.
+
+A schema also allows datasets to enforce rules automatically: for instance, specifying which fields are required, the expected data type for each column, the valid range of numeric values, or the expected format for dates and text. These rules make the dataset self-descriptive and easier to integrate with other datasets following the same standards.
+
+### Frictionless Table Schema
+
+Within the Agroecology Partnership, we recommend using the Frictionless Table Schema to define and document tabular datasets. Frictionless is an open-source framework designed to reduce common data workflow issues—what they call *friction*. It provides both **standards** and **software**: the standards define how data should be structured, and the software applies these rules to automatically transform, validate, and describe datasets.
+
+In Agroecology, we will use one of the Frictionless standards: [The Frictionless Table Schema](https://datapackage.org/standard/data-package/). This specification allows you to define tabular data—such as field names, data types and formats. While it is primarily designed for text-based tables like CSV, it can be extended to other tabular formats.
+
+For example, consider a minimal dataset with three columns: crop_species, crop_yield_kg_per_ha, and planting_date. The dataset contain inconsistencies such as empty cells, inconsistent numeric formats, or irregular date formats. We will see how to detect this issues automatically in the next section Quality Control.
+
+| crop_species | crop_yield_kg_per_ha | planting_date |
+|--------------|----------------------|---------------|
+| Maize        | 5200                 | 2023-03-15    |
+| Wheat        | 4.8 tons             | 2023-03-22    |
+| maiz         | 4900                 |               |
+| Rice         |                      | 2023-04-01    |
+| Barley       | 5500                 | 2023/03/18    |
+
+A table schema describes each column with properties like:
+
+-   `name`: the column name
+-   `type`: expected data type (string, number, date)
+-   `description`: human-readable explanation of the field
+-   `format`: expected format for the values
+-   `rdfType`: optional semantic identifier linking the field to a concept in a controlled vocabulary (See the note below for more information)
+
+Applied to our example:
+
+``` yaml
+fields:
+  - name: crop_species
+    type: string
+    description: Crop species (scientific name)
+    rdfType: http://aims.fao.org/aos/agrovoc/c_1972
+  - name: crop_yield_kg_per_ha
+    type: number
+    description: Crop yield in kilograms per hectare
+    rdfType: http://aims.fao.org/aos/agrovoc/c_10176
+  - name: planting_date
+    type: date
+    format: '%Y-%m-%d'
+    description: Date when the crop was planted
+    rdfType: http://aims.fao.org/aos/agrovoc/c_24065
+primaryKey: crop_species
+missingValues:
+  - ""
+```
+
+All this information is saved into a file. The standard accepts two machine readable formats: `json` and `yaml`. For us however, we will also accept text formats such as MS Word. While this is a not machine readable format and not widely used for this purpose, we understand that is a well-known format by the general public, and can act as an entry point to encourage non-technical users to document their data. We consider that it's better to have documentation in a human-readable format than none at all. Converting a bullet point list in Markdown or Word to JSON/YAML later is a minimal effort compared to the cost of having undocumented data. You can see this example in the three formats below by clicking in each of them
+
+<details>
+
+<summary>example.schema.json</summary>
+
+``` json
+{
+  "fields": [
+    {
+      "name": "crop_species",
+      "type": "string",
+      "description": "Crop species (scientific name)",
+      "rdfType": "http://aims.fao.org/aos/agrovoc/c_1972"
+    },
+    {
+      "name": "crop_yield_kg_per_ha",
+      "type": "number",
+      "description": "Crop yield in kilograms per hectare",
+      "rdfType": "http://aims.fao.org/aos/agrovoc/c_10176"
+    },
+    {
+      "name": "planting_date",
+      "type": "date",
+      "description": "Date when the crop was planted (format: yyyy-MM-dd)",
+      "format": "yyyy-MM-dd",
+      "rdfType": "http://aims.fao.org/aos/agrovoc/c_24065"
+    }
+  ],
+  "primaryKey": "crop_species",
+  "missingValues": [""]
+}
+```
+
+</details>
+
+<details>
+
+<summary>example.schema.yaml</summary>
+
+``` yaml
+fields:
+  - name: crop_species
+    type: string
+    description: Crop species (scientific name)
+    rdfType: http://aims.fao.org/aos/agrovoc/c_1972  # crops
+  - name: crop_yield_kg_per_ha
+    type: number
+    description: Crop yield in kilograms per hectare
+    rdfType: http://aims.fao.org/aos/agrovoc/c_10176  # crop yield
+  - name: planting_date
+    type: date
+    format: '%Y-%m-%d'
+    description: Date when the crop was planted
+    rdfType: http://aims.fao.org/aos/agrovoc/c_24065  # planting date
+primaryKey: crop_species
+missingValues:
+  - ""
+```
+
+</details>
+
+[example.schema.docx](https://raw.githubusercontent.com/agroecologypartnership/agroecology-dp-basic/refs/heads/main/example.schema.docx)
+
+::: callout-note
+The property `rdfType` is an optional property we use to link each field to a concept in a controlled vocabulary or ontology. It helps machines (and humans) understand the meaning of a field beyond its name and link to many other resources in the web, and plays an important role in building AI-ready, machine-readable datasets and knowledge graphs.
+
+For example, the [AGROVOC multilingual thesaurus by FAO](https://agrovoc.fao.org/) has a controlled vocabulary for the word "crop yield", linked to the same term in many languages and linkes to other concepts. It can be found at the URI below:
+
+```         
+http://aims.fao.org/aos/agrovoc/c_10176
+```
+
+Other ontologies with controlled vocabularies that are useful in Agroecology are the [Ecoportal](https://ecoportal.lifewatch.eu/), the [Agroportal](https://agroportal.lirmm.fr/) or the [Survey Ontology](https://cefriel.github.io/survey-ontology/docs/index.html).
+:::
+
+## Tidy data for seamless analysis
+
+We recommend to follow a wide tabular data structure for archiving and publishing tabular data, as described before. This is because the table schema allows to explain in detail the data, and quality control can be automatized.
+
+However, when analyzing these data, following the principles of tidy data can make tabular datasets easier to work with [@wickham2014tidy]. **In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation**. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:
+
+| farm             | grape_yield_kg_h | wine_production_hl_ha |
+|------------------|------------------|-----------------------|
+| Bavaria (DE)     | 7000             | 60                    |
+| La Rioja (ES)    | 5000             | 40                    |
+| Peloponnese (GR) | 6000             | 50                    |
 
 Here, different variables are spread across columns, and units are written inside the values. While this structure is easy to understand for most of us, it is harder to analyze for machines:
 
-- **Units mixed with values:** The measurement units are embedded in the cell content, making it difficult to perform numeric calculations without first extracting and converting the values to numbers.
-- **Variable names as column headers:** Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.
-- **Inconsistent row structure:** If some observations are missing a value, it’s harder to handle missing data systematically.
-- **Limited scalability:** Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.
-- **Filtering and grouping complexity:** Aggregating or comparing values across variables requires multiple steps instead of simple column-based operations.
+-   **Variable names as column headers:** Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.
+-   **Inconsistent row structure:** If some observations are missing a value, it’s harder to handle missing data systematically.
+-   **Limited scalability:** Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.
+-   **Filtering and grouping complexity:** Aggregating or comparing values across variables requires multiple steps instead of simple column-based operations.
 
 A tidy version of the same data represents each measurement as a separate row with explicit columns for the variable type, value, and unit, so that **each row contains a single observation of a single variable**.
 
 | Farm             | Variable        | Value | Unit  |
-| ---------------- | --------------- | ----- | ----- |
+|------------------|-----------------|-------|-------|
 | Bavaria (DE)     | Grape Yield     | 7000  | kg/h  |
 | Bavaria (DE)     | Wine Production | 60    | hl/ha |
 | La Rioja (ES)    | Grape Yield     | 5000  | kg/h  |
@@ -79,10 +206,3 @@ A tidy version of the same data represents each measurement as a separate row wi
 | Peloponnese (GR) | Wine Production | 50    | hl/ha |
 
 This tidy format makes it easy to filter, group, or plot by crop type, farm, or yield, and it aligns with modern data analysis workflows. Following these principles helps ensure that tabular data are both **clear** and **practical** for downstream use.
-
-
-
-
-
-
-

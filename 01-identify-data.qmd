@@ -1,0 +1,7 @@
+# Identifying a data asset or research output
+
+Some project outputs are only useful internally, while others are relevant to people outside the project. The rule is: 
+
+> If an output could be useful to someone outside the project, it is a research output and must be published — unless there is a valid reason not to. 
+
+Outputs that are only useful within the project (e.g. working drafts, internal consultations, or coordination notes) should be stored only on the project’s internal cloud.

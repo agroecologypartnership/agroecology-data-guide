@@ -1,0 +1,7 @@
+# Deposit the data in the project's internal repository
+
+The Agroecology partnership uses a dedicated SharePoint cloud drive as its internal repository. Access is restricted to project partners, and it serves as the central place to store and share data, analysis, and outputs. Whenever possible, you should save your work directly here, in the relevant directory, so that it remains available to the consortium and properly backed up.
+
+The only exception concerns personal data. To comply with GDPR, any files containing personal information must not be uploaded to the shared drive. Instead, they must remain in your institution’s own secure storage.
+
+[![SharePoint](https://img.shields.io/badge/Agroecology%20SharePoint-8DBF37?style=for-the-badge&logo=files&logoColor=white)](https://ilvo.sharepoint.com/sites/AGROECOLOGY_Partnership2)

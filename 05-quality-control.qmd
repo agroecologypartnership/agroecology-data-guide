@@ -1,0 +1,15 @@
+# Quality Control of Data
+
+Validating the data is about making sure data makes sense before sharing it. For tabular data, this means checking that required fields are not empty, that numbers are really numbers, and that dates or text follow a consistent format. Verification looks outward: values should also be plausible, like coordinates pointing to the right country or measurements staying within expected ranges.
+
+Doing this by hand is tedious and error-prone, which is why we rely on tools. A good way to start is to define an schema: a file that declares rules about the columns in your table. The schema establishes if the columns have numeric, character or date values. It sets expectations such as minimum and maximum values or mandatory fields.
+
+Once the schema is in place, there are that tools can automatically check your dataset against it and flag any problems: missing values, numbers in the wrong format, typos in categories, or values outside the valid limits. This shifts the burden from manual inspection to automated validation, making the process faster, more consistent, and easier to repeat every time the dataset is updated.
+
+## Frictionless Data Packages and the Frictionless Table Schema
+
+Within the Agroecology Partnership, we recommend the use of the Frictionless Table Schema to validate and verify datasets automatically. In the section about standardizing tabular data, we explained how this standard allow to define the columns of your data table. Furthermore, the standard allows to write rules to automatically validate the data: what are the data types, expected values, maximum and minimum values, handle missing values, and many more.
+
+### Validating Data with the Open Data Editor
+
+The Open Data Editor is a user-friendly tool that leverages the Frictionless Table Schema to perform automated checks on datasets. [The technical documentation of the Open Data Editor](https://opendataeditor.okfn.org/) explains in detail how to install the app, and how to highlight errors.

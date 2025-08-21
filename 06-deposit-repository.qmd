@@ -1,0 +1,6 @@
+# Data Publishing
+
+Once the data is correctly formatted, data should be published in a trusted repository, ideally before 6 months since its creation and always before the end of the Agroecology partnership. You should archive your data in a trusted repository even if you are writing scientific publication based on them, but archiving does not mean the data will be public yet. Most repositories allow to submit data and keep it private until you decide. A list of trusted repositories is published by [@Lazzeri2024].
+
+Once the data are in the trusted repository, you should get a DOI for your data. You can include the DOI in the spreadsheet in sharepoint, or mail [agroecology-data@lifewatch.eu](mailto:agroecology-data@lifewatch.eu) with the DOI and we will do it for you. If the repository does not provide a DOI, let us know. 
+

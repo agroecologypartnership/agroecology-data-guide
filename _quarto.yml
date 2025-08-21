@@ -37,12 +37,16 @@ book:
 
   chapters:
     - index.qmd
-    - part: data-standarization.qmd
+    - 01-identify-data.qmd
+    - 02-submit-metadata.qmd
+    - 03-deposit-sharepoint.qmd
+    - part: 04-data-standarization.qmd
       chapters: 
         - standarization-tabular-data.qmd
         - standarization-survey-data.qmd
         # - standarization-biodiversity-data.qmd
-    # - part: repositories.qmd
+    - 05-quality-control.qmd
+    - 06-deposit-repository.qmd
     #  chapters: 
     #    - zenodo.qmd
     - references.qmd

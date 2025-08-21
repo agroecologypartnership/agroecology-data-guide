@@ -1,0 +1,43 @@
+# Collect and send the metadata
+
+Metadata are *data about data*. They provide the essential context that allows us to understand, locate, and reuse a dataset or research output. Without metadata, information can easily become unusable or forgotten. With metadata, we ensure that each data asset is described clearly, remains findable, and can be connected to the broader research landscape.
+
+In our partnership, collecting and submitting metadata is a collective responsibility. Whenever you identify a research output, you should first inform your **task leader**. The task leader then notifies the data team at **agroecology-data\@lifewatch.eu**, while copying the Work Package lead. This way, every new output is tracked from the beginning.
+
+The task leader is also responsible for collecting the metadata fields listed in Annex I of the DMP and included here below in the Table 1 for convenience. There are two ways to provide them:
+
+-   By filling in the Excel metadata form available on our [SharePoint](https://ilvo.sharepoint.com/:f:/r/sites/AGROECOLOGY_Partnership2-WP5_DataMonitoring/Gedeelde%20documenten/WP5%20-%20Data%20and%20Monitoring%20AE%20Transition/PROJECT%20IMPLEMENTATION/T5.1/Data%20Management%20Plan/v2.0/Data%20Overview?csf=1&web=1&e=CyWVTX).
+-   By sending the necessary information directly to the data management team, who can complete the form on your behalf.
+
+Once the metadata are collected, the data team will work with you to identify the type of data, select an appropriate standard, and decide on a trusted repository where the asset should be published. This ensures that our outputs are stored securely, remain discoverable, and align with FAIR principles.
+
+------------------------------------------------------------------------
+
+*Table 1. Metadata fields and definitions. They are largely based on the **DataCite schema**, which is an international standard for describing research data. Each field has a short definition and an example to help you fill it in correctly.*
+
+| **Section** | **Field** | **Definition** | **Example** |
+|------------------|------------------|-------------------|------------------|
+| **Data denomination** | **Data set reference name**\* | A unique reference name starting with the prefix “DA_AGROECOLOGY”. | `RO_AGROECOLOGY_stakeholders_survey` |
+|  | **Data set title**\* | A short, descriptive title, easily searchable. | `Stakeholders_Survey_Q2_2023` |
+|  | **Description** | A brief explanation of the data content. | `Survey on technological tools used in agroecology.` |
+|  | **Keywords** | Terms that describe the content and make it discoverable. | `survey, tools, living labs` |
+|  | **Version number**\* | Version identifier for tracking changes. | `V 1.0` |
+| **Data origin** | **Creator(s)**\* | Names, affiliations, and countries of dataset creators. | `Jane Doe, University of X, Belgium` |
+|  | **Data source** | How or why the dataset was generated or re-used. | `Generated dataset` |
+|  | **Creation date**\* | Date when the dataset was produced. | `12.06.2023` |
+|  | **Quality assurance** | Description of quality checks or validation performed. | `Response rate monitoring, data profiling` |
+| **Data specifications** | **Type**\* | General type of data. | `Survey data` |
+|  | **Format**\* | File format(s). | `.csv` |
+|  | **Expected size**\* | Approximate dataset size. | `1 MB` |
+| **Data accessibility** | **Data location**\* | Repository where the dataset is stored. | `GBIF` |
+|  | **Repository submission date**\* | Date of deposit. | `2023.07.15` |
+|  | **Persistent identifier (PID)**\* | DOI or other permanent identifier. | `https://doi.org/10.xxxx/abcd` |
+|  | **Access status**\* | Level of access (open, consortium, restricted). | `Consortium` |
+|  | **Embargo period**\* | Embargo duration, if applicable. | `No embargo` |
+|  | **Funding statement** | Funding acknowledgement text. | `This dataset was generated within the AGROECOLOGY partnership funded by the EU.` |
+| **Data utility** | **Significance inside the partnership**\* | Work Package or task the dataset comes from. | `WP5 – Task 5.1` |
+|  | **Significance outside the partnership** | Who else may benefit from the dataset. | `Policy makers` |
+| **Data publications** | **Related publications** | References to outputs derived from the dataset. | `Deliverable 3.2, Article XYZ` |
+|  | **Data citation** | A ready-to-use citation for the dataset. | `Doe, J. & Smith, A. (2023). Stakeholders Survey Q2 2023. Zenodo.` |
+
+\* Mandatory fields
