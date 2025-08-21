@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Tabular data – Agroecology Partnership: Data Management Guidelines</title>
+<title>4&nbsp; Tabular data – Agroecology Partnership: Data Management Guidelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -51,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./standarization-survey-data.html" rel="next">
-<link href="./data-standarization.html" rel="prev">
+<link href="./04-data-standarization.html" rel="prev">
 <link href="./ae-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -123,7 +157,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-tabular-data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tabular data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-tabular-data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tabular data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -141,9 +175,27 @@ div.csl-indent {
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-identify-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Identifying a data asset or research output</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-submit-metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Collect and send the metadata</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-deposit-sharepoint.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Deposit the data in the project’s internal repository</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./data-standarization.html" class="sidebar-item-text sidebar-link">
+            <a href="./04-data-standarization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Standarization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -153,17 +205,29 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./standarization-tabular-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tabular data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tabular data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./standarization-survey-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Survey data</span></span></a>
   </div>
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-quality-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality Control of Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-deposit-repository.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data Publishing</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -180,25 +244,28 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#best-practices-for-tabular-data" id="toc-best-practices-for-tabular-data" class="nav-link active" data-scroll-target="#best-practices-for-tabular-data"><span class="header-section-number">1.1</span> Best practices for Tabular Data</a>
+  <li><a href="#best-practices-for-tabular-data" id="toc-best-practices-for-tabular-data" class="nav-link active" data-scroll-target="#best-practices-for-tabular-data"><span class="header-section-number">4.1</span> Best practices for Tabular Data</a>
   <ul class="collapse">
-  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats"><span class="header-section-number">1.1.1</span> File formats</a></li>
-  <li><a href="#handling-empty-cells" id="toc-handling-empty-cells" class="nav-link" data-scroll-target="#handling-empty-cells"><span class="header-section-number">1.1.2</span> Handling Empty cells</a></li>
-  <li><a href="#column-names" id="toc-column-names" class="nav-link" data-scroll-target="#column-names"><span class="header-section-number">1.1.3</span> Column names</a></li>
-  <li><a href="#table-schema" id="toc-table-schema" class="nav-link" data-scroll-target="#table-schema"><span class="header-section-number">1.1.4</span> Table schema</a></li>
-  <li><a href="#adhere-to-community-standards" id="toc-adhere-to-community-standards" class="nav-link" data-scroll-target="#adhere-to-community-standards"><span class="header-section-number">1.1.5</span> Adhere to community standards</a></li>
-  <li><a href="#separate-raw-data-from-calculations" id="toc-separate-raw-data-from-calculations" class="nav-link" data-scroll-target="#separate-raw-data-from-calculations"><span class="header-section-number">1.1.6</span> Separate raw data from calculations</a></li>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats"><span class="header-section-number">4.1.1</span> File formats</a></li>
+  <li><a href="#handling-empty-cells" id="toc-handling-empty-cells" class="nav-link" data-scroll-target="#handling-empty-cells"><span class="header-section-number">4.1.2</span> Handling Empty cells</a></li>
+  <li><a href="#column-names" id="toc-column-names" class="nav-link" data-scroll-target="#column-names"><span class="header-section-number">4.1.3</span> Column names</a></li>
+  <li><a href="#adhere-to-community-standards" id="toc-adhere-to-community-standards" class="nav-link" data-scroll-target="#adhere-to-community-standards"><span class="header-section-number">4.1.4</span> Adhere to community standards</a></li>
+  <li><a href="#separate-raw-data-from-calculations" id="toc-separate-raw-data-from-calculations" class="nav-link" data-scroll-target="#separate-raw-data-from-calculations"><span class="header-section-number">4.1.5</span> Separate raw data from calculations</a></li>
   </ul></li>
-  <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data"><span class="header-section-number">1.2</span> What is Tidy data?</a></li>
+  <li><a href="#table-schema" id="toc-table-schema" class="nav-link" data-scroll-target="#table-schema"><span class="header-section-number">4.2</span> Table schema</a>
+  <ul class="collapse">
+  <li><a href="#frictionless-table-schema" id="toc-frictionless-table-schema" class="nav-link" data-scroll-target="#frictionless-table-schema"><span class="header-section-number">4.2.1</span> Frictionless Table Schema</a></li>
+  </ul></li>
+  <li><a href="#tidy-data-for-seamless-analysis" id="toc-tidy-data-for-seamless-analysis" class="nav-link" data-scroll-target="#tidy-data-for-seamless-analysis"><span class="header-section-number">4.3</span> Tidy data for seamless analysis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-tabular-data.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tabular data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-data-standarization.html">Data Standarization</a></li><li class="breadcrumb-item"><a href="./standarization-tabular-data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tabular data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tabular data</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tabular data</span></h1>
 </div>
 
 
@@ -216,22 +283,22 @@ div.csl-indent {
 
 
 <p>Tabular data are often referred as <strong>data structured in rows and columns, where each row contains values for a set of properties and each column represents a specific property of the things described by the rows</strong> <span class="citation" data-cites="w3c_tabular_data_model_2015">(<a href="references.html#ref-w3c_tabular_data_model_2015" role="doc-biblioref">Tennison and Kellogg 2015</a>)</span>. Following certain best practices and well-studied structures when creating tabular data make it easier to analyze, visualize and reuse - by others or by your future self.</p>
-<section id="best-practices-for-tabular-data" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="best-practices-for-tabular-data"><span class="header-section-number">1.1</span> Best practices for Tabular Data</h2>
+<section id="best-practices-for-tabular-data" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="best-practices-for-tabular-data"><span class="header-section-number">4.1</span> Best practices for Tabular Data</h2>
 <p>Tabular data can <strong>follow very different structures</strong>. There is a lot of flexibility in how you name your columns or what values you put in every cell. This flexibility is at the same time a <strong>double-sided knife</strong>: follow the right recommendations, and your data will be easy to analyze. Do the wrong decisions, and your same data could become not usable. Best practices go around columns names and consistency. Here we will describe common mistakes and how to solve them:</p>
-<section id="file-formats" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">1.1.1</span> File formats</h3>
+<section id="file-formats" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">4.1.1</span> File formats</h3>
 <p>While you are free to use proprietary spreadsheet software such as Microsoft Excel or Google Sheets to work on your data, <strong>we strongly recommend storing datasets in <code>.csv</code> or tab-delimited formats</strong>. This ensures compatibility across software and, most importantly, protects your work from accidental obsolescence. Imagine you open an old project and find that, after a software update, some formulas no longer work, column types have shifted, or the file won’t even open.</p>
 <p><strong>Open formats like <code>.csv</code> are readable by virtually any tool</strong>, now and decades from now. If a problem ever arises, there’s a global community of developers who can build solutions to recover your data. Proprietary formats are fine for analysis, but their internal rules can change without notice, and you might only discover it when it’s too late.</p>
 <p>In short: <strong>use Excel or Sheets to crunch numbers if you like, but keep your raw data in <code>.csv</code></strong> and publish both raw and processed datasets in <code>.csv</code> whenever possible. Avoid <code>.xlsx</code> as your master copy. And you can always open <code>.csv</code> in Excel for analysis without locking your work into a single program’s rules.</p>
 </section>
-<section id="handling-empty-cells" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="handling-empty-cells"><span class="header-section-number">1.1.2</span> Handling Empty cells</h3>
+<section id="handling-empty-cells" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="handling-empty-cells"><span class="header-section-number">4.1.2</span> Handling Empty cells</h3>
 <p><strong>Most software handling text, tabular files, are able to recognize empty cells</strong>. This is, a cell where a value is not added. In Excel, these show as blanks, while in other tools like R or Python they show as “NA” or “NULL”. <strong>We recommend to leave empty cells when a value is not known</strong>. A common mistake is to add 0’s in a numeric variable when a value is unknown. This could distort further analysis as 0’s are considered meaningful values. Common file formats that allow empty values are <code>.csv</code>, <code>.txt</code> or <code>.xlsx</code>.</p>
 <p>Certain formats don’t allow adding empty values. In this case, it is recommended to add a placeholder such as <code>-9999</code> in numeric variables, or <code>NA</code> in text variables. This blank value must be documented properly. For instance, the binary format <code>NetCDF</code> does not allow empty cells, but you can document empty values by using the attributes <code>missing_value</code> or <code>_FillValue</code>.</p>
 </section>
-<section id="column-names" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="column-names"><span class="header-section-number">1.1.3</span> Column names</h3>
+<section id="column-names" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="column-names"><span class="header-section-number">4.1.3</span> Column names</h3>
 <p>The names used to describe your variables should be <strong>clear and consistent</strong>. Avoid spaces or special characters, and adopt standard units. Examples:</p>
 <ul>
 <li><code>max_temp_celsius</code> instead of <code>Max Temp Celsius</code></li>
@@ -239,55 +306,195 @@ div.csl-indent {
 </ul>
 <p><strong>We recommend to use lowercase and underscores <code>_</code> instead of spaces</strong>. <strong>This style is known as <code>snake_case</code></strong>. Other well-known style is <code>camelCase</code>, where spaces are avoided and words are spitted by using a Capital letter to emphasize the different words.</p>
 </section>
-<section id="table-schema" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="table-schema"><span class="header-section-number">1.1.4</span> Table schema</h3>
-<p><strong>A table schema is a data dictionary that defines each variable in your data table</strong>, recording information such as the data type of the column (numeric, date, string, boolean…), units or possible values. You can save this in a separated file and send it together with your data. We elaborate about this in the following chapters where we also show some examples and available standards and tools.</p>
-</section>
-<section id="adhere-to-community-standards" class="level3" data-number="1.1.5">
-<h3 data-number="1.1.5" class="anchored" data-anchor-id="adhere-to-community-standards"><span class="header-section-number">1.1.5</span> Adhere to community standards</h3>
+<section id="adhere-to-community-standards" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="adhere-to-community-standards"><span class="header-section-number">4.1.4</span> Adhere to community standards</h3>
 <p>Think of data like a written language: if everyone makes up their own grammar, nobody can understand each other. In data, this applies not only between humans but also between humans and machines. <strong>We rely on computers to analyze our data, but unlike us, they’re terrible at guessing meaning</strong>. To them, data are just zeros and ones. In science, the key is in the context, so <strong>we need to shape our data so both people and machines can read them correctly.</strong></p>
 <p>The easiest way to do that? <strong>Follow community standards</strong>. Chances are, you’re not the first person working in your field. Others have faced the same problems and worked hard to solve them. Communities dealing with certain types of data — geospatial, surveys, biodiversity, genetics — have already agreed on rules and formats so that other researchers and software can make sense of the data. Take dates as an example. You could write them in many ways: <code>DD/MM/YYYY</code>, <code>MM/DD/YYYY</code>, or even with month names. But most software understands them best in the format <code>YYYY-MM-DD</code>. This is not arbitrarty: it’s an international standard (ISO 8601) designed after much discussion and testing.</p>
 <p>In the next chapters, we will look at several community standards relevant to Agroecology, and we will recommend which ones to use for maximum clarity and interoperability.</p>
 </section>
-<section id="separate-raw-data-from-calculations" class="level3" data-number="1.1.6">
-<h3 data-number="1.1.6" class="anchored" data-anchor-id="separate-raw-data-from-calculations"><span class="header-section-number">1.1.6</span> Separate raw data from calculations</h3>
+<section id="separate-raw-data-from-calculations" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="separate-raw-data-from-calculations"><span class="header-section-number">4.1.5</span> Separate raw data from calculations</h3>
 <p><strong>Raw data should always live apart from any data cleaning, wrangling, or analysis</strong>. Even if your raw file has typos, strange characters, or awkward formatting — leave them as they are. They’re part of the original record.</p>
 <p>Do all cleaning and analysis in a separate file or script (R, Python, Julia, Excel formulas…) and share that too. <strong>This will enable anyone can reproduce your process and get the same results</strong>. This is of course, unless you are unsure of your analysis and embarrassed to show to others. In that case you should proofread until you are happy.</p>
 <p>Why keep the artifacts? Because it preserves a trustworthy copy of the original, makes your work reproducible, and gives you a safe point to return to if something later goes wrong.</p>
 </section>
 </section>
-<section id="what-is-tidy-data" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-tidy-data"><span class="header-section-number">1.2</span> What is Tidy data?</h2>
-<p>In practice, following the principles of tidy data can make tabular datasets easier to work with <span class="citation" data-cites="wickham2014tidy">(<a href="references.html#ref-wickham2014tidy" role="doc-biblioref">Wickham 2014</a>)</span>. <strong>In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation</strong>. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:</p>
+<section id="table-schema" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="table-schema"><span class="header-section-number">4.2</span> Table schema</h2>
+<p>A table schema is a data dictionary that standardizes and explains each variable in your dataset. It records key information such as the data type of each column (numeric, date, string, boolean…), expected units, allowed values, or format rules. By clearly describing what each column should contain, the schema ensures that your data is consistent, interpretable, and aligned with project standards.</p>
+<p>The schema is stored as a separate file that should accompany your dataset. It is typically named after the dataset it describes, for example: <code>mydataset.schema.json</code>, <code>mydataset.schema.yaml</code>, or even a text/Word version for non-technical users. Including the schema with the dataset provides a clear reference for anyone using or reviewing the data.</p>
+<p>A schema also allows datasets to enforce rules automatically: for instance, specifying which fields are required, the expected data type for each column, the valid range of numeric values, or the expected format for dates and text. These rules make the dataset self-descriptive and easier to integrate with other datasets following the same standards.</p>
+<section id="frictionless-table-schema" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="frictionless-table-schema"><span class="header-section-number">4.2.1</span> Frictionless Table Schema</h3>
+<p>Within the Agroecology Partnership, we recommend using the Frictionless Table Schema to define and document tabular datasets. Frictionless is an open-source framework designed to reduce common data workflow issues—what they call <em>friction</em>. It provides both <strong>standards</strong> and <strong>software</strong>: the standards define how data should be structured, and the software applies these rules to automatically transform, validate, and describe datasets.</p>
+<p>In Agroecology, we will use one of the Frictionless standards: <a href="https://datapackage.org/standard/data-package/">The Frictionless Table Schema</a>. This specification allows you to define tabular data—such as field names, data types and formats. While it is primarily designed for text-based tables like CSV, it can be extended to other tabular formats.</p>
+<p>For example, consider a minimal dataset with three columns: crop_species, crop_yield_kg_per_ha, and planting_date. The dataset contain inconsistencies such as empty cells, inconsistent numeric formats, or irregular date formats. We will see how to detect this issues automatically in the next section Quality Control.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>crop_species</th>
+<th>crop_yield_kg_per_ha</th>
+<th>planting_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Maize</td>
+<td>5200</td>
+<td>2023-03-15</td>
+</tr>
+<tr class="even">
+<td>Wheat</td>
+<td>4.8 tons</td>
+<td>2023-03-22</td>
+</tr>
+<tr class="odd">
+<td>maiz</td>
+<td>4900</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Rice</td>
+<td></td>
+<td>2023-04-01</td>
+</tr>
+<tr class="odd">
+<td>Barley</td>
+<td>5500</td>
+<td>2023/03/18</td>
+</tr>
+</tbody>
+</table>
+<p>A table schema describes each column with properties like:</p>
+<ul>
+<li><code>name</code>: the column name</li>
+<li><code>type</code>: expected data type (string, number, date)</li>
+<li><code>description</code>: human-readable explanation of the field</li>
+<li><code>format</code>: expected format for the values</li>
+<li><code>rdfType</code>: optional semantic identifier linking the field to a concept in a controlled vocabulary (See the note below for more information)</li>
+</ul>
+<p>Applied to our example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fields</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop species (scientific name)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_1972</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_yield_kg_per_ha</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> number</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop yield in kilograms per hectare</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_10176</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> planting_date</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> date</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">format</span><span class="kw">:</span><span class="at"> </span><span class="st">'%Y-%m-%d'</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Date when the crop was planted</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_24065</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">primaryKey</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">missingValues</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>All this information is saved into a file. The standard accepts two machine readable formats: <code>json</code> and <code>yaml</code>. For us however, we will also accept text formats such as MS Word. While this is a not machine readable format and not widely used for this purpose, we understand that is a well-known format by the general public, and can act as an entry point to encourage non-technical users to document their data. We consider that it’s better to have documentation in a human-readable format than none at all. Converting a bullet point list in Markdown or Word to JSON/YAML later is a minimal effort compared to the cost of having undocumented data. You can see this example in the three formats below by clicking in each of them</p>
+<details>
+<summary>
+example.schema.json
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"fields"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"crop_species"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Crop species (scientific name)"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_1972"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"crop_yield_kg_per_ha"</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"number"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Crop yield in kilograms per hectare"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_10176"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"planting_date"</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"date"</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Date when the crop was planted (format: yyyy-MM-dd)"</span><span class="fu">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"format"</span><span class="fu">:</span> <span class="st">"yyyy-MM-dd"</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_24065"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryKey"</span><span class="fu">:</span> <span class="st">"crop_species"</span><span class="fu">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"missingValues"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">""</span><span class="ot">]</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>
+example.schema.yaml
+</summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fields</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop species (scientific name)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_1972</span><span class="co">  # crops</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_yield_kg_per_ha</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> number</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop yield in kilograms per hectare</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_10176</span><span class="co">  # crop yield</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> planting_date</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> date</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">format</span><span class="kw">:</span><span class="at"> </span><span class="st">'%Y-%m-%d'</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Date when the crop was planted</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_24065</span><span class="co">  # planting date</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">primaryKey</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">missingValues</span><span class="kw">:</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p><a href="https://raw.githubusercontent.com/agroecologypartnership/agroecology-dp-basic/refs/heads/main/example.schema.docx">example.schema.docx</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The property <code>rdfType</code> is an optional property we use to link each field to a concept in a controlled vocabulary or ontology. It helps machines (and humans) understand the meaning of a field beyond its name and link to many other resources in the web, and plays an important role in building AI-ready, machine-readable datasets and knowledge graphs.</p>
+<p>For example, the <a href="https://agrovoc.fao.org/">AGROVOC multilingual thesaurus by FAO</a> has a controlled vocabulary for the word “crop yield”, linked to the same term in many languages and linkes to other concepts. It can be found at the URI below:</p>
+<pre><code>http://aims.fao.org/aos/agrovoc/c_10176</code></pre>
+<p>Other ontologies with controlled vocabularies that are useful in Agroecology are the <a href="https://ecoportal.lifewatch.eu/">Ecoportal</a>, the <a href="https://agroportal.lirmm.fr/">Agroportal</a> or the <a href="https://cefriel.github.io/survey-ontology/docs/index.html">Survey Ontology</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="tidy-data-for-seamless-analysis" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="tidy-data-for-seamless-analysis"><span class="header-section-number">4.3</span> Tidy data for seamless analysis</h2>
+<p>We recommend to follow a wide tabular data structure for archiving and publishing tabular data, as described before. This is because the table schema allows to explain in detail the data, and quality control can be automatized.</p>
+<p>However, when analyzing these data, following the principles of tidy data can make tabular datasets easier to work with <span class="citation" data-cites="wickham2014tidy">(<a href="references.html#ref-wickham2014tidy" role="doc-biblioref">Wickham 2014</a>)</span>. <strong>In tidy data, each row represents a single observation, each column a variable, and each table a distinct type of observation</strong>. For example, consider this table with grape yield and wine production across three European regions . A non-tidy table might look like this:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>farm</th>
-<th>grape_yield</th>
-<th>wine_production</th>
+<th>grape_yield_kg_h</th>
+<th>wine_production_hl_ha</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Bavaria (DE)</td>
-<td>7000 kg/h</td>
-<td>60 hl/ha</td>
+<td>7000</td>
+<td>60</td>
 </tr>
 <tr class="even">
 <td>La Rioja (ES)</td>
-<td>5000 kg/h</td>
-<td>40 hl/ha</td>
+<td>5000</td>
+<td>40</td>
 </tr>
 <tr class="odd">
 <td>Peloponnese (GR)</td>
-<td>6000 kg/h</td>
-<td>50 hl/ha</td>
+<td>6000</td>
+<td>50</td>
 </tr>
 </tbody>
 </table>
 <p>Here, different variables are spread across columns, and units are written inside the values. While this structure is easy to understand for most of us, it is harder to analyze for machines:</p>
 <ul>
-<li><strong>Units mixed with values:</strong> The measurement units are embedded in the cell content, making it difficult to perform numeric calculations without first extracting and converting the values to numbers.</li>
 <li><strong>Variable names as column headers:</strong> Each variable requires a separate column, so adding new variables (e.g., sugar content, harvest date) would require adding new columns, breaking automation.</li>
 <li><strong>Inconsistent row structure:</strong> If some observations are missing a value, it’s harder to handle missing data systematically.</li>
 <li><strong>Limited scalability:</strong> Combining multiple datasets or reshaping data for plotting, statistical analysis, or modeling requires extra preprocessing steps.</li>
@@ -775,13 +982,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data-standarization.html" class="pagination-link" aria-label="Data Standarization">
+      <a href="./04-data-standarization.html" class="pagination-link" aria-label="Data Standarization">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Standarization</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./standarization-survey-data.html" class="pagination-link" aria-label="Survey data">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Survey data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Survey data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

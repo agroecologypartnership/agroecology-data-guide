@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Agroecology Partnership: Data Management Guidelines</title>
+<title>3&nbsp; Quality Control of Data – Agroecology Partnership: Data Management Guidelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-deposit-repository.html" rel="prev">
+<link href="./data-standarization.html" rel="next">
+<link href="./01-submit-metadata.html" rel="prev">
 <link href="./ae-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -121,7 +137,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-quality-control.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quality Control of Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -141,25 +157,25 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-identify-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./00-identify-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Identifying a data asset or research output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-submit-metadata.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-submit-metadata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Collect and send the metadata</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-deposit-sharepoint.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Deposit the data in the project’s internal repository</span></span></a>
+  <a href="./02-quality-control.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quality Control of Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./04-data-standarization.html" class="sidebar-item-text sidebar-link">
+            <a href="./data-standarization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Standarization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -182,19 +198,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-quality-control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality Control of Data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-deposit-repository.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data Publishing</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -203,15 +207,24 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#frictionless-data-packages-and-the-frictionless-table-schema" id="toc-frictionless-data-packages-and-the-frictionless-table-schema" class="nav-link active" data-scroll-target="#frictionless-data-packages-and-the-frictionless-table-schema"><span class="header-section-number">3.1</span> Frictionless Data Packages and the Frictionless Table Schema</a>
+  <ul class="collapse">
+  <li><a href="#an-example-of-the-frictionless-table-schema-applied-to-agroecology" id="toc-an-example-of-the-frictionless-table-schema-applied-to-agroecology" class="nav-link" data-scroll-target="#an-example-of-the-frictionless-table-schema-applied-to-agroecology"><span class="header-section-number">3.1.1</span> An example of the Frictionless Table Schema applied to Agroecology</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quality Control of Data</span></h1>
 </div>
 
 
@@ -228,41 +241,142 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-anes2020" class="csl-entry" role="listitem">
-ANES. 2020. <span>“Time Series Study Full Release: User Guide and
-Codebook.”</span> <a href="https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf">https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf</a>.
-</div>
-<div id="ref-Lazzeri2024" class="csl-entry" role="listitem">
-Lazzeri, E. 2024. <span>“Update of the Study on the Readiness of
-Research Data and Literature Repositories to Facilitate Compliance with
-the Open Science Horizon Europe MGA Requirements (1.0).”</span> Zenodo.
-<a href="https://doi.org/10.5281/zenodo.13919643">https://doi.org/10.5281/zenodo.13919643</a>.
-</div>
-<div id="ref-scrocca2021surveyontology" class="csl-entry" role="listitem">
-Scrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni,
-and Irene Celino. 2021. <span>“The Survey Ontology: Packaging Survey
-Research as Research Objects.”</span> In <em>Proceedings of the 2nd
-Workshop on Data and Research Objects Management for Linked Open Science
-– Co-Located with ISWC 2021</em>. <a href="https://doi.org/10.4126/FRL01-006429412">https://doi.org/10.4126/FRL01-006429412</a>.
-</div>
-<div id="ref-w3c_tabular_data_model_2015" class="csl-entry" role="listitem">
-Tennison, Jeni, and Gregg Kellogg. 2015. <span>“Model for Tabular Data
-and Metadata on the Web.”</span> World Wide Web Consortium; W3C
-Recommendation. <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/">https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/</a>.
-</div>
-<div id="ref-wickham2014tidy" class="csl-entry" role="listitem">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of
-Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
-</div>
-<div id="ref-zimmer2024tidy" class="csl-entry" role="listitem">
-Zimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024.
-<em>Exploring Complex Survey Data Analysis Using r: A Tidy Introduction
-with {Srvyr} and {Survey}</em>. Chapman &amp; Hall/CRC Press. <a href="https://tidy-survey-r.github.io/tidy-survey-book/">https://tidy-survey-r.github.io/tidy-survey-book/</a>.
-</div>
-</div>
+<p>Validating the data is about making sure data makes sense before sharing it. For tabular data, this means checking that required fields are not empty, that numbers are really numbers, and that dates or text follow a consistent format. Verification looks outward: values should also be plausible, like coordinates pointing to the right country or measurements staying within expected ranges.</p>
+<p>Doing this by hand is tedious and error-prone, which is why we rely on tools. A good way to start is to define an schema: a file that declares rules about the columns in your table. The schema stablishes if the columns have numeric, character or date values. It sets expectations such as minimum and maximum values or mandatory fields.</p>
+<p>Once the schema is in place, there are that tools can automatically check your dataset against it and flag any problems: missing values, numbers in the wrong format, typos in categories, or values outside the valid limits. This shifts the burden from manual inspection to automated validation, making the process faster, more consistent, and easier to repeat every time the dataset is updated.</p>
+<section id="frictionless-data-packages-and-the-frictionless-table-schema" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="frictionless-data-packages-and-the-frictionless-table-schema"><span class="header-section-number">3.1</span> Frictionless Data Packages and the Frictionless Table Schema</h2>
+<p>Within the Agroecology Partnership, we recommend the use of the Frictionless Table Schema to validate and verify datasets automatically.</p>
+<p>Frictionless is a open-source framework that aims to make it easier to work with data by reducing common data workflow issues - what they call <em>friction</em>. This is a well-consolidated standard with active support and adoption by many. There are two items that Frictionless offers: Standards and Software. The software capitalizes on the created standards. By assuming certain rules, the software can then transform, validate or describe the data.</p>
+<p>In Agroecology, we will use one of the standards of Frictionless: <a href="https://datapackage.org/standard/data-package/">The Frictionless Table Schema</a>. This specification helps to describe rules of how the data should look like, which will help us later for automatic validation. The standard is designed for tabular data in a text format such as CSV, but it can be extended to any other data files that have data in a table.</p>
+<section id="an-example-of-the-frictionless-table-schema-applied-to-agroecology" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="an-example-of-the-frictionless-table-schema-applied-to-agroecology"><span class="header-section-number">3.1.1</span> An example of the Frictionless Table Schema applied to Agroecology</h3>
+<p>Let’s consider a minimal dataset with three columns: <code>crop_species</code>, <code>crop_yield_kg_per_ha</code> and <code>planting_date</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>crop_species</th>
+<th>crop_yield_kg_per_ha</th>
+<th>planting_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Maize</td>
+<td>5200</td>
+<td>2023-03-15</td>
+</tr>
+<tr class="even">
+<td>Wheat</td>
+<td>4.8 tons</td>
+<td>2023-03-22</td>
+</tr>
+<tr class="odd">
+<td>maiz</td>
+<td>4900</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Rice</td>
+<td></td>
+<td>2023-04-01</td>
+</tr>
+<tr class="odd">
+<td>Barley</td>
+<td>5500</td>
+<td>2023/03/18</td>
+</tr>
+</tbody>
+</table>
+<p>As you may see, this table has some inconsistencies: there are empty cells, and the format of the fields is not consistent. These issues are included on purpose so we can later validate the table and flag them automatically. But first, we must create the table schema. In this example, we will use the following common Frictionless properties:</p>
+<ul>
+<li><code>name</code>: field name in the dataset</li>
+<li><code>type</code>: expected data type (e.g.&nbsp;string, number, date)</li>
+<li><code>description</code>: human-readable explanation of the field</li>
+<li><code>format</code>: expected format for values (e.g.&nbsp;date format)</li>
+<li><code>rdfType</code>: semantic identifier for the concept the field represents (See the note below for more information)</li>
+</ul>
+<p>Applied to our example, the columns or fields would be defined as:</p>
+<pre><code>- fields
+  - crop_species
+    - type: string
+    - description: Crop species (scientific or common name)
+    - rdfType: http://aims.fao.org/aos/agrovoc/c_1972
+  - crop_yield_kg_per_ha
+    - type: number
+    - description: Crop yield in kilograms per hectare
+    - rdfType: http://aims.fao.org/aos/agrovoc/c_10176
+  - planting_date
+    - type: date
+    - format: yyyy-MM-dd
+    - description: Date when the crop was planted
+    - rdfType: http://aims.fao.org/aos/agrovoc/c_24065
+- primaryKey: crop_species
+- missingValues: [""]</code></pre>
+<p>All this information is saved into a file. The standard accepts two machine readable formats: <code>json</code> and <code>yaml</code>. For us however, we will also accept text formats such as MS Word. While this is a not machine readable format and not widely used for this purpose, we understand that is a well-known format by the general public, and can act as an entry point to encourage non-technical users to document their data. We consider that it’s better to have documentation in a human-readable format than none at all. Converting a bullet point list in Markdown or Word to JSON/YAML later is a minimal effort compared to the cost of having undocumented data. You can see this example in the three formats below by clicking in each of them</p>
+<details>
+<summary>
+example.schema.json
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"fields"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"crop_species"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Crop species (scientific name)"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_1972"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"crop_yield_kg_per_ha"</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"number"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Crop yield in kilograms per hectare"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_10176"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"planting_date"</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"date"</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Date when the crop was planted (format: yyyy-MM-dd)"</span><span class="fu">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"format"</span><span class="fu">:</span> <span class="st">"yyyy-MM-dd"</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"rdfType"</span><span class="fu">:</span> <span class="st">"http://aims.fao.org/aos/agrovoc/c_24065"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryKey"</span><span class="fu">:</span> <span class="st">"crop_species"</span><span class="fu">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"missingValues"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">""</span><span class="ot">]</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>
+example.schema.yaml
+</summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fields</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop species (scientific name)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_1972</span><span class="co">  # crops</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> crop_yield_kg_per_ha</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> number</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Crop yield in kilograms per hectare</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_10176</span><span class="co">  # crop yield</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> planting_date</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> date</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">format</span><span class="kw">:</span><span class="at"> </span><span class="st">'%Y-%m-%d'</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Date when the crop was planted</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rdfType</span><span class="kw">:</span><span class="at"> http://aims.fao.org/aos/agrovoc/c_24065</span><span class="co">  # planting date</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">primaryKey</span><span class="kw">:</span><span class="at"> crop_species</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">missingValues</span><span class="kw">:</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p><a href="https://raw.githubusercontent.com/agroecologypartnership/agroecology-dp-basic/refs/heads/main/example.schema.docx">example.schema.docx</a></p>
+<blockquote class="blockquote">
+<p>[!NOTE] The property <code>rdfType</code> is an optional property we use to link each field to a concept in a controlled vocabulary or ontology. It helps machines (and humans) understand the meaning of a field beyond its name and link to many other resources in the web, and plays an important role in building AI-ready, machine-readable datasets and knowledge graphs.</p>
+<p>For example, the <a href="https://agrovoc.fao.org/">AGROVOC multilingual thesaurus by FAO</a> has a controlled vocabulary for the word “crop yield”, linked to the same term in many languages and linkes to other concepts. It can be found at the URI below:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">http://aims.fao.org/aos/agrovoc/c_10176</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Other ontologies with controlled vocabularies that are useful in Agroecology are the <a href="https://ecoportal.lifewatch.eu/">Ecoportal</a>, the <a href="https://agroportal.lirmm.fr/">Agroportal</a> or the <a href="https://cefriel.github.io/survey-ontology/docs/index.html">Survey Ontology</a>.</p>
+</blockquote>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -684,11 +798,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-deposit-repository.html" class="pagination-link" aria-label="Data Publishing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data Publishing</span></span>
+      <a href="./01-submit-metadata.html" class="pagination-link" aria-label="Collect and send the metadata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Collect and send the metadata</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./data-standarization.html" class="pagination-link" aria-label="Data Standarization">
+        <span class="nav-page-text">Data Standarization</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -703,7 +820,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
