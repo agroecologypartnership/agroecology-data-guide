@@ -1,109 +1,104 @@
 # Survey data
 
-Recommendations for organizing survey data in the Agroecology partnership following a wide, spreadsheet format approach. This structure is inspired by the data structure of the American National Election Studies [@anes2020], the recommendations of [@zimmer2024tidy], while applying a tidy data approach [@wickham2014tidy] with usability on mind and the enabling of a later transformation into Open Linked Data as structured in The Survey Ontology [@scrocca2021surveyontology].
+Typically, surveys are created using an online tool. The link to the questionnaire is later passed to the participants, and the responses are collected in the platform. This method is both convenient and more effective compared to surveys done via text documents or email. However, there are certain steps to follow to ensure that the survey design and the results are fully interoperable and they are properly preserved in the long term, when software changes or gets deprecated. We will propose the use of three common survey software: We recommend the use of KoboToolbox as the first choice, since it is compatible with the XLSForm format. Alternatively, LimeSurvey can also be used. EUSurveys can be used only if there is need to adhere to very specific EU requirements that the other platforms cannot meet, as it has no tools for exporting the survey in interoperable formats.
 
-## Survey project structure
+## XLSForm and KoboToolbox
 
-We propose a project structure that uses `csv` files as a way of formally describing the survey, both questions, answer and other information. This structure may be accompanied of a text description of the survey for further context. A minimal example of the file directory would look like:
+We recommend to adopt the XLSForm format for survey authoring. This format allows to write from scratch a survey following certain standard rules. The advantage is that there is a large community that has adopted this format and many tools have been developed, not only to create surveys and deploy online automatically, but also to automate reports, analysis and more. The format propose the use of a spreadsheet such as MS Excel, OpenOffice calc or Google Sheets. Three sheets shall be created: the first one "survey" contains the questions and their type, including free text answers, multiple or single choice and many more.
 
-```         
-.
-├── 📁 data/
-│   ├── codebook.csv
-│   └── responses.csv
-└── 📁 docs/
-    └── survey_descriptor.pdf
-```
 
-The data files are inside the data directory, and the different documents including the description of the survey are inside the docs directory.
 
-This structure can be further extended, depending on the needs of the survey. For instance, a README file can be added to the root of the project with a short explanation of the survey. When uploading to Zenodo, this can be written instead in the Description of the metadata. If the survey is uploaded to GitHub, we recommend to use the markdown format for the README file. Also on GitHub, it is recommended to include a LICENSE file, choosing the license of the data.
+*Table 1. Survey sheet. Note in the column "type", the text just after "select_one" and "select_multiple" are unique identifiers that are used in the next sheet "choices" to link the questions to the possible answers. the column "name" is a unique identifier of the question. "label" has the text of the question that is shown to participants. It is possible to write the labels in several languages (via suffix ":en" for English, ":fr" for French, etc) to tackle participants that speak different languages.*
 
-In addition, any notebook or spreadsheet used to analyze the data can be added to the analysis folder, and reusable code scripts can be added to the scripts directory.
+| type | name | label::en |
+|----------------|----------------|----------------------------------------|
+| text | Q1_name | What is the name of the platform? |
+| text | Q2_website | What is the website of the platform? |
+| text | Q3_contact_name | Who is the primary contact for this survey? |
+| text | Q4_contact_email | What is the email address of the primary contact? |
+| select_one list_5_agroecology | Q5_agroecology | Is the platform designed for the Agroecology community? |
+| select_multiple list_6_focus | Q6_focus | Which thematic areas best describe the focus or services of your platform? |
 
-```         
-.
-├── README.md
-├── LICENSE.md
-├── 📁 data/
-│   ├── codebook.csv
-│   └── responses.csv
-├── 📁 docs/
-│   ├── survey_descriptor.pdf
-│   └── survey_analysis.pdf
-├── 📁 scripts/
-│   └── clean_data.R
-└── 📁 analysis/
-    └── survey_analysis.xlsx or survey_analysis.ipynb
-```
 
-## Survey project description file
 
-A survey is always quite specific, and cannot be fully understood without a good explanation of what is the context and the rationale behind the different questions. It is also a sign of respect to the respondents to explain what is the goal of your survey. We propose to include this description in a `survey_descriptor.pdf` file in the `docs/` directory.
+The second sheet is "choices", containing the possible answers of questions with single or multiple choices. They are linked through unique identifiers.
 
-## Survey project data files
 
-Surveys are typically are typically stored as `pdf`, `docx` or `xlsx`. Having interoperability on mind, we propose to use **text delimited files** such as `csv`. These type of files are largely used in data science. they have several advantages, including easy machine-readability and being an open format with no owner, which ensures data will remain readable and understandable by many different software for a long time. We propose the following specifications:
 
--   Separate columns using semicolons `;`
--   Use double-quotes `"` to quote strings
--   Use `UTF-8` as encoding.
+*Table 2. Choices sheet. The column "list_name" contains the unique identifier that was given in the column "type" of the survey sheet. The column "name" has unique identifiers. The column "label" has the text of the answer that is shown to participants .It is possible to write the labels in several languages (via suffix ":en" for English, ":fr" for French, etc) to tackle participants that speak different languages.*
 
-We avoid using colons `,` as separators because these can be used in free text, open questions. They would affect the structure of the data. We recommend to prohibit the use of semicolons `;` and double-quotes `"` in any case that is not separating columns and delimiting strings respectively. We encourage you to use software solutions that allow blocking these characters in free-text answers provided by users. If blocking the use of these characters it is not possible, we urge you to ask respondents to not use them while filling up your survey.
+| list_name | name | label::en |
+|--------------------|------------------------|----------------------------|
+| list_5_agroecology | yes | Yes |
+| list_5_agroecology | no | No |
+| list_6_focus | agroecological_practices | Agroecological practices |
+| list_6_focus | data_and_monitoring_tools | Data and monitoring tools |
+| list_6_focus | training_and_knowledge_exchange | Training and knowledge exchange |
+| list_6_focus | policy_and_governance_support | Policy and governance support |
+| list_6_focus | collaboration_and_stakeholder_engagement | Collaboration and stakeholder engagement |
+| list_6_focus | other | Other |
 
-### Codebook
 
-Codebooks are files that **explain the questions** formulated in the survey. An unique identifier (a code) is assigned to each question, linking the information about the questions with the answers provided by the participants. But the codebook can be used as well during the design of the survey.
 
-The example below shows an hypothetical survey codebook about the user satisfaction using an online platform.
+Lastly, there is a "settings" sheet that allows to write metadata, rules and more.
 
-`./data/codebook.csv`
 
-| Code | Label | Type | QuestionText | Values | Cardinality | QuestionType |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| Q1_age | Age | integer | What is your age? |  | 1..1 | SingleChoice |
-| Q2_gender | Gender | string | What is your gender? | Female\|Male\|Other | 1..1 | SingleChoice |
-| Q3_satisfaction | Satisfaction | integer | How satisfied are you with the platform? | 1=Very unsatisfied\|2=Unsatisfied\|3=Neutral\|4=Satisfied\|5=Very satisfied | 1..1 | SingleChoice |
-| Q4_improvement | Improvement | string | What would you improve in the platform? |  | 0..n | FreeText |
 
-Each row in the codebook describes a survey question. Below is an explanation of each column:
+*Table 3. Settings sheet. In this case, it only contains the name and version of the survey.*
 
--   **Code**: A unique identifier for the question. It must be unique within the survey.
+| form_title                  | form_id                     | version |
+|-----------------------------|-----------------------------|---------|
+| Agroecology Platform Survey | agroecology_platform_survey | v1.0    |
 
--   **Label**: A short, human-readable label or name for the variable that can be used in spreadsheets or statistical software.
 
--   **Type**: The data type of the answer. Common types include "integer", "string", "boolean", or "date".
+### Using KoboToolbox for survey design and deployment
 
--   **QuestionText**: The full text of the question as it was asked in the survey.
+[KoboToolbox](https://www.kobotoolbox.org) is an online platform that supports the XLSForm standard and allows researchers to design, deploy, and manage surveys for free. It was originally created for humanitarian organizations but is now widely used in research and development contexts. KoboToolbox offers an intuitive web interface, enabling all users to create complex forms that include conditional logic, geolocation, multimedia inputs, and more.
 
--   **Values**: A list of possible values for closed questions. Options are separated by vertical bars (\|), and value labels can be assigned using the equals sign (=). For open or free-text questions, this field is left empty.
+While KoboToolbox offers optional paid features for large organizations or high data volumes, its free tier is sufficient for most research projects. The platform is open to collaboration with academic institutions and complies with the EU General Data Protection Regulation (GDPR). A [Data Processing Agreement (DPA)](https://support.kobotoolbox.org/gdpr.html) can be signed online to ensure full compliance with data protection requirements.
 
--   **Cardinality**: Indicates how many answers are allowed. The cardinality pattern is `min..max`, where the first number is the minimum required answers and the second is the maximum allowed.  `n` denotes “no fixed upper limit,” so `1..1` means exactly one answer, while `0..n` means the question may be skipped or answered multiple times.
+#### Steps to create and archive a survey using KoboToolbox
 
--   **QuestionType**: Describes the nature of the question. Typical values include "SingleChoice", "MultipleChoice" or "FreeText"
+1. **Register** for a free account at [https://www.kobotoolbox.org](https://www.kobotoolbox.org).
+2. **Design your survey** directly in the platform using the form builder, or import an existing XLSForm spreadsheet.
+3. **Export the survey structure**:
+   - Inside your project, go to **Form → (three dots in the top-right corner) → Download XLS**.  
+   - This export follows the XLSForm standard.
+4. **Export each sheet to `.csv`** for long-term archival.  
+   This ensures maximum interoperability and readability across software and time.
+5. **Deploy the survey** to collect responses by sharing the generated link with participants.
+6. **Download the responses** at **Data → Downloads → CSV** once data collection is complete.
+7. **Archive together** the survey design (XLSForm and CSV versions) and the responses (CSV).  
 
-### Responses
+This workflow ensures the entire lifecycle of the survey—from authoring to data collection and preservation—follows open, well-documented standards that can be reused or audited in the future.
 
-**Answers to the survey** are recorded in the `./data/responses.csv` file. **Every row is the answers of a participant**, and **every column is named after the `code`** in `codebook.csv`. This allows to link easily the information about the questions without getting the responses file full of details that difficult the analysis.
+#### Additional resources
 
-`./data/responses.csv`
+- **Free documentation**: [https://support.kobotoolbox.org/getting_started_xlsform.html](https://support.kobotoolbox.org/getting_started_xlsform.html)
+- **XLSForm templates**: [Google Sheets template](https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko/edit?usp=sharing)
 
-| respondent_id | Q1_age | Q2_gender | Q3_satisfaction | Q4_improvement |
-|-------------|-------------|-------------|-------------|--------------------|
-| 001 | 34 | female | 4 | I think the platform is user-friendly |
-| 002 | 29 | male | 5 | Needs better support for collaboration. |
 
-**We recommend to include an unique identifier for every respondent**, here named as `respondent_id`. This allows to annomymize the survey without loosing the link to private information about the respondents that might have been collected (e.g. name, email, address)
+### Alternative tools
 
-### Participants and private information
+Other tools are compatible with the XLSForm standard. The most notable is [Open Data Kit (ODK)](https://getodk.org), an open-source software ecosystem that supports field data collection, including offline mobile apps.  
+Although ODK is fully open-source, its cloud hosting service has costs. Researchers could deploy their own ODK instance if resources allow. However, given the free hosting provided by KoboToolbox (with limitations), this is the most practical option for most research groups.
 
-Sometimes your survey might collect personal or sensitive information — like names, emails, or locations. If that’s the case, you **should never share this data publicly**. In the Agroecology Partnership, we follow the **GDPR** (the General Data Protection Regulation), which means that **private data must be handled carefully and securely**.
 
-**We recommend creating a separate file** (not to be published!) called `participants.csv` inside your `data/` folder. This file is **for internal use only** — for example, if you need to follow up with participants or validate something later. To keep things tidy and safe, give each person a unique code, which we’ll call `respondent_id` and store personal info (like name or email) in separate columns. Use clear, human-friendly column names, and write them using `snake_case` (i.e. separate the words of the column names with underscores `_`).
+### FAIRness and long-term preservation
 
-| respondent_id | name | email | country | preferred_language | wants_emails |
-|------------|------------|------------|------------|------------|------------|
-| 001 | Jane Doe | jane.doe\@example.com | France | fr | FALSE |
-| 002 | John Doe | john.doe\@example.com | USA | en | TRUE |
+The XLSForm format, being based on spreadsheet structures (`.xlsx` or `.csv`), guarantees long-term accessibility and interoperability. Even if the tools used today (such as KoboToolbox) were to become unavailable, the survey structure and data would remain readable and reusable. This makes XLSForm a strong choice for compliance with FAIR principles (Findable, Accessible, Interoperable, and Reusable).
 
-The table above is an example (with mocked information) of how the `participats.csv` would look like. This file helps you **anonymize your actual survey data**, because in the main `responses.csv`, you'll only keep the `respondent_id`, and this is nothing that could personally identify someone.
+To ensure full FAIRness:
+- Always archive both the survey structure (`.xlsx` and `.csv`) and the responses (`.csv`).
+- Store these files in an open data repository or institutional archive.
+- Include a short README file documenting the purpose, date, authorship, and data collection context.
+
+Regarding the survey structure and responses, we recommend using text-delimited files, such as csv, which are widely adopted in data science and research workflows. These files offer several advantages: they are machine-readable, open, and not tied to any proprietary software, ensuring that data remains accessible and understandable in the long term.
+
+To promote consistency and interoperability, we propose the following specifications for csv files:
+
+- Use semicolons `;` as column separators.
+- Use double quotes `"` to delimit text strings.
+- Use UTF-8 as the character encoding.
+
+We avoid commas `,` as separators because they are often used in free-text responses and could disrupt the file structure. Similarly, we recommend restricting the use of semicolons `;` and double quotes `"` to their intended purposes only (as column separators and string delimiters, respectively). Whenever possible, configure the survey platform to block or escape these characters in user-provided text. If such restrictions are not feasible, respondents should be instructed not to use these characters when completing the survey.
