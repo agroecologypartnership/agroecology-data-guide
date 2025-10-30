@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -210,13 +190,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#survey-project-structure" id="toc-survey-project-structure" class="nav-link active" data-scroll-target="#survey-project-structure"><span class="header-section-number">5.1</span> Survey project structure</a></li>
-  <li><a href="#survey-project-description-file" id="toc-survey-project-description-file" class="nav-link" data-scroll-target="#survey-project-description-file"><span class="header-section-number">5.2</span> Survey project description file</a></li>
-  <li><a href="#survey-project-data-files" id="toc-survey-project-data-files" class="nav-link" data-scroll-target="#survey-project-data-files"><span class="header-section-number">5.3</span> Survey project data files</a>
+  <li><a href="#xlsform-and-kobotoolbox" id="toc-xlsform-and-kobotoolbox" class="nav-link active" data-scroll-target="#xlsform-and-kobotoolbox"><span class="header-section-number">5.1</span> XLSForm and KoboToolbox</a>
   <ul class="collapse">
-  <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook"><span class="header-section-number">5.3.1</span> Codebook</a></li>
-  <li><a href="#responses" id="toc-responses" class="nav-link" data-scroll-target="#responses"><span class="header-section-number">5.3.2</span> Responses</a></li>
-  <li><a href="#participants-and-private-information" id="toc-participants-and-private-information" class="nav-link" data-scroll-target="#participants-and-private-information"><span class="header-section-number">5.3.3</span> Participants and private information</a></li>
+  <li><a href="#using-kobotoolbox-for-survey-design-and-deployment" id="toc-using-kobotoolbox-for-survey-design-and-deployment" class="nav-link" data-scroll-target="#using-kobotoolbox-for-survey-design-and-deployment"><span class="header-section-number">5.1.1</span> Using KoboToolbox for survey design and deployment</a></li>
+  <li><a href="#alternative-tools" id="toc-alternative-tools" class="nav-link" data-scroll-target="#alternative-tools"><span class="header-section-number">5.1.2</span> Alternative tools</a></li>
+  <li><a href="#fairness-and-long-term-preservation" id="toc-fairness-and-long-term-preservation" class="nav-link" data-scroll-target="#fairness-and-long-term-preservation"><span class="header-section-number">5.1.3</span> FAIRness and long-term preservation</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/agroecologypartnership/agroecology-data-guide/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -243,221 +221,183 @@ div.csl-indent {
 </header>
 
 
-<p>Recommendations for organizing survey data in the Agroecology partnership following a wide, spreadsheet format approach. This structure is inspired by the data structure of the American National Election Studies <span class="citation" data-cites="anes2020">(<a href="references.html#ref-anes2020" role="doc-biblioref">ANES 2020</a>)</span>, the recommendations of <span class="citation" data-cites="zimmer2024tidy">(<a href="references.html#ref-zimmer2024tidy" role="doc-biblioref">Zimmer, Powell, and Velásquez 2024</a>)</span>, while applying a tidy data approach <span class="citation" data-cites="wickham2014tidy">(<a href="references.html#ref-wickham2014tidy" role="doc-biblioref">Wickham 2014</a>)</span> with usability on mind and the enabling of a later transformation into Open Linked Data as structured in The Survey Ontology <span class="citation" data-cites="scrocca2021surveyontology">(<a href="references.html#ref-scrocca2021surveyontology" role="doc-biblioref">Scrocca et al. 2021</a>)</span>.</p>
-<section id="survey-project-structure" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="survey-project-structure"><span class="header-section-number">5.1</span> Survey project structure</h2>
-<p>We propose a project structure that uses <code>csv</code> files as a way of formally describing the survey, both questions, answer and other information. This structure may be accompanied of a text description of the survey for further context. A minimal example of the file directory would look like:</p>
-<pre><code>.
-├── 📁 data/
-│   ├── codebook.csv
-│   └── responses.csv
-└── 📁 docs/
-    └── survey_descriptor.pdf</code></pre>
-<p>The data files are inside the data directory, and the different documents including the description of the survey are inside the docs directory.</p>
-<p>This structure can be further extended, depending on the needs of the survey. For instance, a README file can be added to the root of the project with a short explanation of the survey. When uploading to Zenodo, this can be written instead in the Description of the metadata. If the survey is uploaded to GitHub, we recommend to use the markdown format for the README file. Also on GitHub, it is recommended to include a LICENSE file, choosing the license of the data.</p>
-<p>In addition, any notebook or spreadsheet used to analyze the data can be added to the analysis folder, and reusable code scripts can be added to the scripts directory.</p>
-<pre><code>.
-├── README.md
-├── LICENSE.md
-├── 📁 data/
-│   ├── codebook.csv
-│   └── responses.csv
-├── 📁 docs/
-│   ├── survey_descriptor.pdf
-│   └── survey_analysis.pdf
-├── 📁 scripts/
-│   └── clean_data.R
-└── 📁 analysis/
-    └── survey_analysis.xlsx or survey_analysis.ipynb</code></pre>
-</section>
-<section id="survey-project-description-file" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="survey-project-description-file"><span class="header-section-number">5.2</span> Survey project description file</h2>
-<p>A survey is always quite specific, and cannot be fully understood without a good explanation of what is the context and the rationale behind the different questions. It is also a sign of respect to the respondents to explain what is the goal of your survey. We propose to include this description in a <code>survey_descriptor.pdf</code> file in the <code>docs/</code> directory.</p>
-</section>
-<section id="survey-project-data-files" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="survey-project-data-files"><span class="header-section-number">5.3</span> Survey project data files</h2>
-<p>Surveys are typically are typically stored as <code>pdf</code>, <code>docx</code> or <code>xlsx</code>. Having interoperability on mind, we propose to use <strong>text delimited files</strong> such as <code>csv</code>. These type of files are largely used in data science. they have several advantages, including easy machine-readability and being an open format with no owner, which ensures data will remain readable and understandable by many different software for a long time. We propose the following specifications:</p>
-<ul>
-<li>Separate columns using semicolons <code>;</code></li>
-<li>Use double-quotes <code>"</code> to quote strings</li>
-<li>Use <code>UTF-8</code> as encoding.</li>
-</ul>
-<p>We avoid using colons <code>,</code> as separators because these can be used in free text, open questions. They would affect the structure of the data. We recommend to prohibit the use of semicolons <code>;</code> and double-quotes <code>"</code> in any case that is not separating columns and delimiting strings respectively. We encourage you to use software solutions that allow blocking these characters in free-text answers provided by users. If blocking the use of these characters it is not possible, we urge you to ask respondents to not use them while filling up your survey.</p>
-<section id="codebook" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="codebook"><span class="header-section-number">5.3.1</span> Codebook</h3>
-<p>Codebooks are files that <strong>explain the questions</strong> formulated in the survey. An unique identifier (a code) is assigned to each question, linking the information about the questions with the answers provided by the participants. But the codebook can be used as well during the design of the survey.</p>
-<p>The example below shows an hypothetical survey codebook about the user satisfaction using an online platform.</p>
-<p><code>./data/codebook.csv</code></p>
+<p>Typically, surveys are created using an online tool. The link to the questionnaire is later passed to the participants, and the responses are collected in the platform. This method is both convenient and more effective compared to surveys done via text documents or email. However, there are certain steps to follow to ensure that the survey design and the results are fully interoperable and they are properly preserved in the long term, when software changes or gets deprecated. We will propose the use of three common survey software: We recommend the use of KoboToolbox as the first choice, since it is compatible with the XLSForm format. Alternatively, LimeSurvey can also be used. EUSurveys can be used only if there is need to adhere to very specific EU requirements that the other platforms cannot meet, as it has no tools for exporting the survey in interoperable formats.</p>
+<section id="xlsform-and-kobotoolbox" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="xlsform-and-kobotoolbox"><span class="header-section-number">5.1</span> XLSForm and KoboToolbox</h2>
+<p>We recommend to adopt the XLSForm format for survey authoring. This format allows to write from scratch a survey following certain standard rules. The advantage is that there is a large community that has adopted this format and many tools have been developed, not only to create surveys and deploy online automatically, but also to automate reports, analysis and more. The format propose the use of a spreadsheet such as MS Excel, OpenOffice calc or Google Sheets. Three sheets shall be created: the first one “survey” contains the questions and their type, including free text answers, multiple or single choice and many more.</p>
+<p><em>Table 1. Survey sheet. Note in the column “type”, the text just after “select_one” and “select_multiple” are unique identifiers that are used in the next sheet “choices” to link the questions to the possible answers. the column “name” is a unique identifier of the question. “label” has the text of the question that is shown to participants. It is possible to write the labels in several languages (via suffix “:en” for English, “:fr” for French, etc) to tackle participants that speak different languages.</em></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Code</th>
-<th>Label</th>
-<th>Type</th>
-<th>QuestionText</th>
-<th>Values</th>
-<th>Cardinality</th>
-<th>QuestionType</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Q1_age</td>
-<td>Age</td>
-<td>integer</td>
-<td>What is your age?</td>
-<td></td>
-<td>1..1</td>
-<td>SingleChoice</td>
-</tr>
-<tr class="even">
-<td>Q2_gender</td>
-<td>Gender</td>
-<td>string</td>
-<td>What is your gender?</td>
-<td>Female|Male|Other</td>
-<td>1..1</td>
-<td>SingleChoice</td>
-</tr>
-<tr class="odd">
-<td>Q3_satisfaction</td>
-<td>Satisfaction</td>
-<td>integer</td>
-<td>How satisfied are you with the platform?</td>
-<td>1=Very unsatisfied|2=Unsatisfied|3=Neutral|4=Satisfied|5=Very satisfied</td>
-<td>1..1</td>
-<td>SingleChoice</td>
-</tr>
-<tr class="even">
-<td>Q4_improvement</td>
-<td>Improvement</td>
-<td>string</td>
-<td>What would you improve in the platform?</td>
-<td></td>
-<td>0..n</td>
-<td>FreeText</td>
-</tr>
-</tbody>
-</table>
-<p>Each row in the codebook describes a survey question. Below is an explanation of each column:</p>
-<ul>
-<li><p><strong>Code</strong>: A unique identifier for the question. It must be unique within the survey.</p></li>
-<li><p><strong>Label</strong>: A short, human-readable label or name for the variable that can be used in spreadsheets or statistical software.</p></li>
-<li><p><strong>Type</strong>: The data type of the answer. Common types include “integer”, “string”, “boolean”, or “date”.</p></li>
-<li><p><strong>QuestionText</strong>: The full text of the question as it was asked in the survey.</p></li>
-<li><p><strong>Values</strong>: A list of possible values for closed questions. Options are separated by vertical bars (|), and value labels can be assigned using the equals sign (=). For open or free-text questions, this field is left empty.</p></li>
-<li><p><strong>Cardinality</strong>: Indicates how many answers are allowed. The cardinality pattern is <code>min..max</code>, where the first number is the minimum required answers and the second is the maximum allowed.  <code>n</code> denotes “no fixed upper limit,” so <code>1..1</code> means exactly one answer, while <code>0..n</code> means the question may be skipped or answered multiple times.</p></li>
-<li><p><strong>QuestionType</strong>: Describes the nature of the question. Typical values include “SingleChoice”, “MultipleChoice” or “FreeText”</p></li>
-</ul>
-</section>
-<section id="responses" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="responses"><span class="header-section-number">5.3.2</span> Responses</h3>
-<p><strong>Answers to the survey</strong> are recorded in the <code>./data/responses.csv</code> file. <strong>Every row is the answers of a participant</strong>, and <strong>every column is named after the <code>code</code></strong> in <code>codebook.csv</code>. This allows to link easily the information about the questions without getting the responses file full of details that difficult the analysis.</p>
-<p><code>./data/responses.csv</code></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>respondent_id</th>
-<th>Q1_age</th>
-<th>Q2_gender</th>
-<th>Q3_satisfaction</th>
-<th>Q4_improvement</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>001</td>
-<td>34</td>
-<td>female</td>
-<td>4</td>
-<td>I think the platform is user-friendly</td>
-</tr>
-<tr class="even">
-<td>002</td>
-<td>29</td>
-<td>male</td>
-<td>5</td>
-<td>Needs better support for collaboration.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>We recommend to include an unique identifier for every respondent</strong>, here named as <code>respondent_id</code>. This allows to annomymize the survey without loosing the link to private information about the respondents that might have been collected (e.g.&nbsp;name, email, address)</p>
-</section>
-<section id="participants-and-private-information" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="participants-and-private-information"><span class="header-section-number">5.3.3</span> Participants and private information</h3>
-<p>Sometimes your survey might collect personal or sensitive information — like names, emails, or locations. If that’s the case, you <strong>should never share this data publicly</strong>. In the Agroecology Partnership, we follow the <strong>GDPR</strong> (the General Data Protection Regulation), which means that <strong>private data must be handled carefully and securely</strong>.</p>
-<p><strong>We recommend creating a separate file</strong> (not to be published!) called <code>participants.csv</code> inside your <code>data/</code> folder. This file is <strong>for internal use only</strong> — for example, if you need to follow up with participants or validate something later. To keep things tidy and safe, give each person a unique code, which we’ll call <code>respondent_id</code> and store personal info (like name or email) in separate columns. Use clear, human-friendly column names, and write them using <code>snake_case</code> (i.e.&nbsp;separate the words of the column names with underscores <code>_</code>).</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>respondent_id</th>
+<th>type</th>
 <th>name</th>
-<th>email</th>
-<th>country</th>
-<th>preferred_language</th>
-<th>wants_emails</th>
+<th>label::en</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>001</td>
-<td>Jane Doe</td>
-<td>jane.doe@example.com</td>
-<td>France</td>
-<td>fr</td>
-<td>FALSE</td>
+<td>text</td>
+<td>Q1_name</td>
+<td>What is the name of the platform?</td>
 </tr>
 <tr class="even">
-<td>002</td>
-<td>John Doe</td>
-<td>john.doe@example.com</td>
-<td>USA</td>
-<td>en</td>
-<td>TRUE</td>
+<td>text</td>
+<td>Q2_website</td>
+<td>What is the website of the platform?</td>
+</tr>
+<tr class="odd">
+<td>text</td>
+<td>Q3_contact_name</td>
+<td>Who is the primary contact for this survey?</td>
+</tr>
+<tr class="even">
+<td>text</td>
+<td>Q4_contact_email</td>
+<td>What is the email address of the primary contact?</td>
+</tr>
+<tr class="odd">
+<td>select_one list_5_agroecology</td>
+<td>Q5_agroecology</td>
+<td>Is the platform designed for the Agroecology community?</td>
+</tr>
+<tr class="even">
+<td>select_multiple list_6_focus</td>
+<td>Q6_focus</td>
+<td>Which thematic areas best describe the focus or services of your platform?</td>
 </tr>
 </tbody>
 </table>
-<p>The table above is an example (with mocked information) of how the <code>participats.csv</code> would look like. This file helps you <strong>anonymize your actual survey data</strong>, because in the main <code>responses.csv</code>, you’ll only keep the <code>respondent_id</code>, and this is nothing that could personally identify someone.</p>
+<p>The second sheet is “choices”, containing the possible answers of questions with single or multiple choices. They are linked through unique identifiers.</p>
+<p><em>Table 2. Choices sheet. The column “list_name” contains the unique identifier that was given in the column “type” of the survey sheet. The column “name” has unique identifiers. The column “label” has the text of the answer that is shown to participants .It is possible to write the labels in several languages (via suffix “:en” for English, “:fr” for French, etc) to tackle participants that speak different languages.</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 33%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>list_name</th>
+<th>name</th>
+<th>label::en</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>list_5_agroecology</td>
+<td>yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>list_5_agroecology</td>
+<td>no</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>list_6_focus</td>
+<td>agroecological_practices</td>
+<td>Agroecological practices</td>
+</tr>
+<tr class="even">
+<td>list_6_focus</td>
+<td>data_and_monitoring_tools</td>
+<td>Data and monitoring tools</td>
+</tr>
+<tr class="odd">
+<td>list_6_focus</td>
+<td>training_and_knowledge_exchange</td>
+<td>Training and knowledge exchange</td>
+</tr>
+<tr class="even">
+<td>list_6_focus</td>
+<td>policy_and_governance_support</td>
+<td>Policy and governance support</td>
+</tr>
+<tr class="odd">
+<td>list_6_focus</td>
+<td>collaboration_and_stakeholder_engagement</td>
+<td>Collaboration and stakeholder engagement</td>
+</tr>
+<tr class="even">
+<td>list_6_focus</td>
+<td>other</td>
+<td>Other</td>
+</tr>
+</tbody>
+</table>
+<p>Lastly, there is a “settings” sheet that allows to write metadata, rules and more.</p>
+<p><em>Table 3. Settings sheet. In this case, it only contains the name and version of the survey.</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>form_title</th>
+<th>form_id</th>
+<th>version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Agroecology Platform Survey</td>
+<td>agroecology_platform_survey</td>
+<td>v1.0</td>
+</tr>
+</tbody>
+</table>
+<section id="using-kobotoolbox-for-survey-design-and-deployment" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="using-kobotoolbox-for-survey-design-and-deployment"><span class="header-section-number">5.1.1</span> Using KoboToolbox for survey design and deployment</h3>
+<p><a href="https://www.kobotoolbox.org">KoboToolbox</a> is an online platform that supports the XLSForm standard and allows researchers to design, deploy, and manage surveys for free. It was originally created for humanitarian organizations but is now widely used in research and development contexts. KoboToolbox offers an intuitive web interface, enabling all users to create complex forms that include conditional logic, geolocation, multimedia inputs, and more.</p>
+<p>While KoboToolbox offers optional paid features for large organizations or high data volumes, its free tier is sufficient for most research projects. The platform is open to collaboration with academic institutions and complies with the EU General Data Protection Regulation (GDPR). A <a href="https://support.kobotoolbox.org/gdpr.html">Data Processing Agreement (DPA)</a> can be signed online to ensure full compliance with data protection requirements.</p>
+<section id="steps-to-create-and-archive-a-survey-using-kobotoolbox" class="level4" data-number="5.1.1.1">
+<h4 data-number="5.1.1.1" class="anchored" data-anchor-id="steps-to-create-and-archive-a-survey-using-kobotoolbox"><span class="header-section-number">5.1.1.1</span> Steps to create and archive a survey using KoboToolbox</h4>
+<ol type="1">
+<li><strong>Register</strong> for a free account at <a href="https://www.kobotoolbox.org">https://www.kobotoolbox.org</a>.</li>
+<li><strong>Design your survey</strong> directly in the platform using the form builder, or import an existing XLSForm spreadsheet.</li>
+<li><strong>Export the survey structure</strong>:
+<ul>
+<li>Inside your project, go to <strong>Form → (three dots in the top-right corner) → Download XLS</strong>.<br>
+</li>
+<li>This export follows the XLSForm standard.</li>
+</ul></li>
+<li><strong>Export each sheet to <code>.csv</code></strong> for long-term archival.<br>
+This ensures maximum interoperability and readability across software and time.</li>
+<li><strong>Deploy the survey</strong> to collect responses by sharing the generated link with participants.</li>
+<li><strong>Download the responses</strong> at <strong>Data → Downloads → CSV</strong> once data collection is complete.</li>
+<li><strong>Archive together</strong> the survey design (XLSForm and CSV versions) and the responses (CSV).</li>
+</ol>
+<p>This workflow ensures the entire lifecycle of the survey—from authoring to data collection and preservation—follows open, well-documented standards that can be reused or audited in the future.</p>
+</section>
+<section id="additional-resources" class="level4" data-number="5.1.1.2">
+<h4 data-number="5.1.1.2" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">5.1.1.2</span> Additional resources</h4>
+<ul>
+<li><strong>Free documentation</strong>: <a href="https://support.kobotoolbox.org/getting_started_xlsform.html">https://support.kobotoolbox.org/getting_started_xlsform.html</a></li>
+<li><strong>XLSForm templates</strong>: <a href="https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko/edit?usp=sharing">Google Sheets template</a></li>
+</ul>
+</section>
+</section>
+<section id="alternative-tools" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="alternative-tools"><span class="header-section-number">5.1.2</span> Alternative tools</h3>
+<p>Other tools are compatible with the XLSForm standard. The most notable is <a href="https://getodk.org">Open Data Kit (ODK)</a>, an open-source software ecosystem that supports field data collection, including offline mobile apps.<br>
+Although ODK is fully open-source, its cloud hosting service has costs. Researchers could deploy their own ODK instance if resources allow. However, given the free hosting provided by KoboToolbox (with limitations), this is the most practical option for most research groups.</p>
+</section>
+<section id="fairness-and-long-term-preservation" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="fairness-and-long-term-preservation"><span class="header-section-number">5.1.3</span> FAIRness and long-term preservation</h3>
+<p>The XLSForm format, being based on spreadsheet structures (<code>.xlsx</code> or <code>.csv</code>), guarantees long-term accessibility and interoperability. Even if the tools used today (such as KoboToolbox) were to become unavailable, the survey structure and data would remain readable and reusable. This makes XLSForm a strong choice for compliance with FAIR principles (Findable, Accessible, Interoperable, and Reusable).</p>
+<p>To ensure full FAIRness: - Always archive both the survey structure (<code>.xlsx</code> and <code>.csv</code>) and the responses (<code>.csv</code>). - Store these files in an open data repository or institutional archive. - Include a short README file documenting the purpose, date, authorship, and data collection context.</p>
+<p>Regarding the survey structure and responses, we recommend using text-delimited files, such as csv, which are widely adopted in data science and research workflows. These files offer several advantages: they are machine-readable, open, and not tied to any proprietary software, ensuring that data remains accessible and understandable in the long term.</p>
+<p>To promote consistency and interoperability, we propose the following specifications for csv files:</p>
+<ul>
+<li>Use semicolons <code>;</code> as column separators.</li>
+<li>Use double quotes <code>"</code> to delimit text strings.</li>
+<li>Use UTF-8 as the character encoding.</li>
+</ul>
+<p>We avoid commas <code>,</code> as separators because they are often used in free-text responses and could disrupt the file structure. Similarly, we recommend restricting the use of semicolons <code>;</code> and double quotes <code>"</code> to their intended purposes only (as column separators and string delimiters, respectively). Whenever possible, configure the survey platform to block or escape these characters in user-provided text. If such restrictions are not feasible, respondents should be instructed not to use these characters when completing the survey.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-anes2020" class="csl-entry" role="listitem">
-ANES. 2020. <span>“Time Series Study Full Release: User Guide and Codebook.”</span> <a href="https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf">https://electionstudies.org/wp-content/uploads/2022/02/anes_timeseries_2020_userguidecodebook_20220210.pdf</a>.
-</div>
-<div id="ref-scrocca2021surveyontology" class="csl-entry" role="listitem">
-Scrocca, Marco, Daniele Scandolari, Giulia Re Calegari, Irene Baroni, and Irene Celino. 2021. <span>“The Survey Ontology: Packaging Survey Research as Research Objects.”</span> In <em>Proceedings of the 2nd Workshop on Data and Research Objects Management for Linked Open Science – Co-Located with ISWC 2021</em>. <a href="https://doi.org/10.4126/FRL01-006429412">https://doi.org/10.4126/FRL01-006429412</a>.
-</div>
-<div id="ref-wickham2014tidy" class="csl-entry" role="listitem">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
-</div>
-<div id="ref-zimmer2024tidy" class="csl-entry" role="listitem">
-Zimmer, Samantha A., Ryan J. Powell, and Iván C. Velásquez. 2024. <em>Exploring Complex Survey Data Analysis Using r: A Tidy Introduction with {Srvyr} and {Survey}</em>. Chapman &amp; Hall/CRC Press. <a href="https://tidy-survey-r.github.io/tidy-survey-book/">https://tidy-survey-r.github.io/tidy-survey-book/</a>.
-</div>
-</div>
 </section>
 </section>
 
